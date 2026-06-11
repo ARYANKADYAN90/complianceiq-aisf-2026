@@ -76,6 +76,6 @@ async def test_scan_mock_mode(scanner):
 @pytest.mark.asyncio
 async def test_scan_empty_files(scanner):
     """Test that scanning empty file list raises ValueError."""
-    scanner.mock_mode = False
-        with pytest.raises(ValueError, match="No files uploaded"):
+        scanner.mock_mode = False
+    with pytest.raises(ValueError, match="No files uploaded"):
         await scanner.scan([])

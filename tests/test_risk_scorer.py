@@ -19,7 +19,7 @@ async def test_cv_screening_is_high_risk(scorer, empty_gap_matrix):
     sp = SystemProfile.example_data()
     sp.use_case = "CV screening"
     empty_gap_matrix.system_profile = sp
-        res = await scorer.score(empty_gap_matrix)
+    res = await scorer.score(empty_gap_matrix)
     assert res.risk_tier.value == "HIGH RISK"
 
 
@@ -28,7 +28,7 @@ async def test_medical_ai_is_high_risk(scorer, empty_gap_matrix):
     sp = SystemProfile.example_data()
     sp.use_case = "medical diagnosis"
     empty_gap_matrix.system_profile = sp
-        res = await scorer.score(empty_gap_matrix)
+    res = await scorer.score(empty_gap_matrix)
     assert res.risk_tier.value == "HIGH RISK"
 
 
@@ -37,7 +37,7 @@ async def test_chatbot_is_limited_risk(scorer, empty_gap_matrix):
     sp = SystemProfile.example_data()
     sp.use_case = "customer service chatbot"
     empty_gap_matrix.system_profile = sp
-        res = await scorer.score(empty_gap_matrix)
+    res = await scorer.score(empty_gap_matrix)
     assert res.risk_tier.value == "LIMITED RISK"
 
 
@@ -46,7 +46,7 @@ async def test_weather_app_is_minimal_risk(scorer, empty_gap_matrix):
     sp = SystemProfile.example_data()
     sp.use_case = "weather forecasting"
     empty_gap_matrix.system_profile = sp
-        res = await scorer.score(empty_gap_matrix)
+    res = await scorer.score(empty_gap_matrix)
     assert res.risk_tier.value == "MINIMAL RISK"
 
 
@@ -57,5 +57,5 @@ async def test_compliance_percentage_all_compliant_is_100(scorer):
     for gap in gm.gaps:
         gap.status = "COMPLIANT"
     gm.system_profile = sp
-        res = await scorer.score(gm)
+    res = await scorer.score(gm)
     assert res.compliance_percentage == 100.0
