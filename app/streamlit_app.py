@@ -6,8 +6,8 @@ import sys
 # Ensure src is in the python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.agents.orchestrator import ComplianceIQOrchestrator
-from src.config import get_settings
+from src.agents.orchestrator import ComplianceIQOrchestrator  # noqa: E402
+from src.config import get_settings  # noqa: E402
 
 # --- Page Config ---
 st.set_page_config(

@@ -69,7 +69,7 @@ class ScannerAgent:
             return MOCK_SYSTEM_PROFILE
 
         prompt = f"""
-You are an AI system compliance analyst. Extract structured 
+You are an AI system compliance analyst. Extract structured
 information from this AI system documentation.
 
 Documentation:
