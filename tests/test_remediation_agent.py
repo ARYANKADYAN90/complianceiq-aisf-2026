@@ -66,7 +66,9 @@ async def test_generate_item_priority_logic(agent):
 async def test_plan_mock_mode():
     """Verify plan uses mock data when in mock mode."""
     mock_agent = RemediationAgent(mock_mode=True)
-    plan = await mock_agent.plan(GapMatrix.example_data(), RiskScorecard.example_data())  # noqa: E501
+    plan = await mock_agent.plan(
+        GapMatrix.example_data(), RiskScorecard.example_data()
+    )  # noqa: E501
 
     assert isinstance(plan, RemediationPlan)
     assert len(plan.items) == 10

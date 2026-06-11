@@ -82,7 +82,10 @@ MOCK_GAP_MATRIX = {
             "status": "NON_COMPLIANT",
             "severity": "HIGH",
             "description": "System does not automatically record events over its lifetime.",  # noqa: E501
-            "missing_evidence": ["Automated logging mechanism", "Log retention policy"],  # noqa: E501
+            "missing_evidence": [
+                "Automated logging mechanism",
+                "Log retention policy",
+            ],  # noqa: E501
             "remediation_hint": "Implement automated logging for traceability.",
             "citations": ["EU AI Act Art.12(1) - automated record-keeping required"],
             "confidence_score": 0.92,

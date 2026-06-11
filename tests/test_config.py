@@ -7,7 +7,8 @@ def test_mock_mode_default_true():
     assert settings.mock_mode is True
 
 
-def test_validate_credentials_raises_without_azure_when_mock_false():
+def test_validate_credentials_raises_without_azure_when_mock_false(monkeypatch):
+    monkeypatch.delenv("AZURE_FOUNDRY_PROJECT_ENDPOINT", raising=False)
     with pytest.raises(ValueError, match="AZURE_FOUNDRY_PROJECT_ENDPOINT"):
         Config(mock_mode=False).validate_azure_credentials()
 
@@ -30,5 +31,3 @@ def test_get_settings_cached():
     s1 = get_settings()
     s2 = get_settings()
     assert s1 is s2
-
-

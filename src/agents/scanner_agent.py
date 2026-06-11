@@ -25,7 +25,9 @@ class ScannerAgent:
 
     def __init__(self, mock_mode: bool = None):
         self.settings = get_settings()
-        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode  # noqa: E501
+        self.mock_mode = (
+            mock_mode if mock_mode is not None else self.settings.mock_mode
+        )  # noqa: E501
 
     async def extract_text(self, file_bytes: bytes, filename: str) -> str:
         """Extract raw text from any supported file format."""

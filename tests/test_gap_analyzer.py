@@ -59,7 +59,19 @@ async def test_parallel_execution(agent, system_profile, mocker):
     # Mock the individual check method
     mock_check = AsyncMock()
     from src.models.gap_matrix import ComplianceGap
-    mock_check.return_value = ComplianceGap(requirement_id='REQ', requirement_name='Req', article_reference='Art', status=ComplianceStatus.COMPLIANT, severity=GapSeverity.LOW, description='', missing_evidence=[], remediation_hint='', citations=[], confidence_score=1.0)
+
+    mock_check.return_value = ComplianceGap(
+        requirement_id="REQ",
+        requirement_name="Req",
+        article_reference="Art",
+        status=ComplianceStatus.COMPLIANT,
+        severity=GapSeverity.LOW,
+        description="",
+        missing_evidence=[],
+        remediation_hint="",
+        citations=[],
+        confidence_score=1.0,
+    )
     mocker.patch.object(agent, "_check_single_requirement", mock_check)
 
     await agent.analyze(system_profile)

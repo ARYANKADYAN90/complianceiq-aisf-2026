@@ -22,7 +22,9 @@ class ReportAgent:
 
     def __init__(self, mock_mode: bool = None):
         self.settings = get_settings()
-        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode  # noqa: E501
+        self.mock_mode = (
+            mock_mode if mock_mode is not None else self.settings.mock_mode
+        )  # noqa: E501
 
     async def _call_llm(self, prompt: str) -> str:
         """Helper to call LLM for report generation."""

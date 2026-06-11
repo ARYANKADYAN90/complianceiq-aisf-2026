@@ -78,4 +78,3 @@ async def test_scan_empty_files(scanner):
     scanner.mock_mode = False
     with pytest.raises(ValueError, match="No files uploaded"):
         await scanner.scan([])
-

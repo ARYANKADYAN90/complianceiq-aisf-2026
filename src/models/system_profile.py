@@ -5,7 +5,9 @@ from pydantic import BaseModel, Field
 class SystemProfile(BaseModel):
     """Profile of an AI system extracted from its documentation."""
 
-    use_case: str = Field(description="What the AI system does and its primary purpose")  # noqa: E501
+    use_case: str = Field(
+        description="What the AI system does and its primary purpose"
+    )  # noqa: E501
     system_name: str = Field(description="Name of the AI system")
     vendor_or_developer: str = Field(
         description="Entity that developed or vends the system"
@@ -41,7 +43,9 @@ class SystemProfile(BaseModel):
     )
     raw_text: str = Field(description="Raw text extracted from uploaded documentation")
     extraction_confidence: float = Field(
-        ge=0.0, le=1.0, description="Confidence score of the extraction from 0.0 to 1.0"  # noqa: E501
+        ge=0.0,
+        le=1.0,
+        description="Confidence score of the extraction from 0.0 to 1.0",  # noqa: E501
     )
 
     @classmethod

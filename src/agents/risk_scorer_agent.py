@@ -141,7 +141,9 @@ class RiskScorerAgent:
 
     def __init__(self, mock_mode: bool = None):
         self.settings = get_settings()
-        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode  # noqa: E501
+        self.mock_mode = (
+            mock_mode if mock_mode is not None else self.settings.mock_mode
+        )  # noqa: E501
 
     def _classify_risk_tier(
         self, system_profile: SystemProfile

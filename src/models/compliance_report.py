@@ -35,8 +35,12 @@ class ComplianceReport(BaseModel):
     technical_findings: str = Field(
         description="Detailed technical breakdown for engineering"
     )
-    certificate_draft: str = Field(description="Draft of formal compliance certificate")  # noqa: E501
-    sections: List[ReportSection] = Field(description="Detailed sections of the report")  # noqa: E501
+    certificate_draft: str = Field(
+        description="Draft of formal compliance certificate"
+    )  # noqa: E501
+    sections: List[ReportSection] = Field(
+        description="Detailed sections of the report"
+    )  # noqa: E501
     risk_tier: str = Field(description="EU AI Act risk tier classification")
     compliance_percentage: float = Field(description="Overall compliance score")
     critical_gaps_count: int = Field(description="Number of critical gaps")

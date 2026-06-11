@@ -15,7 +15,9 @@ class RemediationItem(BaseModel):
     """An actionable step to remediate a compliance gap."""
 
     item_id: str = Field(description="Unique identifier for the remediation action")
-    gap_reference: str = Field(description="Reference to the requirement_id of the gap")  # noqa: E501
+    gap_reference: str = Field(
+        description="Reference to the requirement_id of the gap"
+    )  # noqa: E501
     action_title: str = Field(description="Short title of the remediation action")
     action_description: str = Field(
         description="Detailed description of what needs to be done"
@@ -58,7 +60,9 @@ class RemediationItem(BaseModel):
 class RemediationPlan(BaseModel):
     """Comprehensive remediation roadmap."""
 
-    items: List[RemediationItem] = Field(description="All remediation actions required")  # noqa: E501
+    items: List[RemediationItem] = Field(
+        description="All remediation actions required"
+    )  # noqa: E501
     created_at: datetime = Field(description="When the plan was created")
 
     @computed_field
