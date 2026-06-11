@@ -142,11 +142,6 @@ RULES FOR THIS REPORT:
         if self.mock_mode:
             return MOCK_REPORTS["certificate_draft"]
 
-
-            [g for g in scorecard.risk_findings if g.met]
-        )  # wait, finding is just finding.
-
-
         # Proper gap counts
         actionable_gaps = len([g for g in roadmap.items])
 
