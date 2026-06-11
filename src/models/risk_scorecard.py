@@ -13,7 +13,7 @@ class EUAIActRiskTier(str, Enum):
 
 class RiskFinding(BaseModel):
     """A specific finding related to risk classification criteria."""
-    
+
     criterion: str = Field(description="The risk criterion being evaluated")
     met: bool = Field(description="Whether the criterion is met")
     evidence: str = Field(description="Evidence supporting this finding")
@@ -25,23 +25,31 @@ class RiskFinding(BaseModel):
             criterion="Biometric categorization of natural persons",
             met=False,
             evidence="System documentation states it only processes text data.",
-            article_reference="Article 5(1)(c)"
+            article_reference="Article 5(1)(c)",
         )
 
 
 class RiskScorecard(BaseModel):
     """Overall risk scorecard for an AI system based on EU AI Act."""
-    
+
     risk_tier: EUAIActRiskTier = Field(description="Overall EU AI Act risk tier")
     compliance_percentage: float = Field(description="Overall compliance percentage")
     critical_count: int = Field(description="Number of critical severity gaps")
     high_count: int = Field(description="Number of high severity gaps")
     medium_count: int = Field(description="Number of medium severity gaps")
     low_count: int = Field(description="Number of low severity gaps")
-    total_citations: int = Field(description="Total number of Foundry IQ citations used")
-    risk_findings: List[RiskFinding] = Field(description="Findings justifying the risk tier")
-    classification_rationale: str = Field(description="Detailed rationale for the risk classification")
-    applicable_articles: List[str] = Field(description="List of applicable EU AI Act articles")
+    total_citations: int = Field(
+        description="Total number of Foundry IQ citations used"
+    )
+    risk_findings: List[RiskFinding] = Field(
+        description="Findings justifying the risk tier"
+    )
+    classification_rationale: str = Field(
+        description="Detailed rationale for the risk classification"
+    )
+    applicable_articles: List[str] = Field(
+        description="List of applicable EU AI Act articles"
+    )
     scored_at: datetime = Field(description="When the scoring was performed")
 
     @classmethod

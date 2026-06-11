@@ -14,6 +14,7 @@ from agent_framework import ChatAgent
 
 logger = logging.getLogger(__name__)
 
+
 class ReportAgent:
     """
     Agent 5: Generates final compliance reports tailored to different stakeholders.
@@ -33,7 +34,7 @@ class ReportAgent:
                     model_deployment_name=self.settings.azure_foundry_model_deployment,
                     async_credential=credential,
                 ) as client,
-                ChatAgent(chat_client=client) as agent
+                ChatAgent(chat_client=client) as agent,
             ):
                 result = await agent.run(prompt)
                 return result.content.strip()
@@ -43,21 +44,33 @@ class ReportAgent:
         finally:
             await credential.close()
 
-    async def _generate_executive_summary(self, system_profile: SystemProfile, 
-                                          gap_matrix: GapMatrix, 
-                                          scorecard: RiskScorecard, 
-                                          roadmap: RemediationPlan) -> str:
+    async def _generate_executive_summary(
+        self,
+        system_profile: SystemProfile,
+        gap_matrix: GapMatrix,
+        scorecard: RiskScorecard,
+        roadmap: RemediationPlan,
+    ) -> str:
         """500-word board-level report. No jargon. Clear language."""
         if self.mock_mode:
             return MOCK_REPORTS["executive_summary"]
-            
-        critical_gaps_text = "\n".join([f"- {g.requirement_name}: {g.description}" 
-                                        for g in gap_matrix.gaps if g.severity == GapSeverity.CRITICAL])
+
+        critical_gaps_text = "\n".join(
+            [
+                f"- {g.requirement_name}: {g.description}"
+                for g in gap_matrix.gaps
+                if g.severity == GapSeverity.CRITICAL
+            ]
+        )
         if not critical_gaps_text:
             critical_gaps_text = "None identified."
-            
-        immediate_actions_text = "\n".join([f"- {a.action_title} (Owner: {a.owner_role}, Effort: {a.effort_days} days)" 
-                                            for a in roadmap.immediate_actions])
+
+        immediate_actions_text = "\n".join(
+            [
+                f"- {a.action_title} (Owner: {a.owner_role}, Effort: {a.effort_days} days)"
+                for a in roadmap.immediate_actions
+            ]
+        )
         if not immediate_actions_text:
             immediate_actions_text = "None required."
 
@@ -85,14 +98,17 @@ RULES FOR THIS REPORT:
 """
         return await self._call_llm(prompt)
 
-    async def _generate_technical_report(self, system_profile: SystemProfile, 
-                                         gap_matrix: GapMatrix,
-                                         scorecard: RiskScorecard, 
-                                         roadmap: RemediationPlan) -> str:
+    async def _generate_technical_report(
+        self,
+        system_profile: SystemProfile,
+        gap_matrix: GapMatrix,
+        scorecard: RiskScorecard,
+        roadmap: RemediationPlan,
+    ) -> str:
         """800-word engineering report with exact article references."""
         if self.mock_mode:
             return MOCK_REPORTS["technical_report"]
-            
+
         gaps_details = ""
         for g in gap_matrix.gaps:
             if g.status != ComplianceStatus.COMPLIANT:
@@ -116,20 +132,29 @@ RULES FOR THIS REPORT:
 """
         return await self._call_llm(prompt)
 
-    async def _generate_certificate_draft(self, system_profile: SystemProfile, 
-                                          scorecard: RiskScorecard, 
-                                          roadmap: RemediationPlan) -> str:
+    async def _generate_certificate_draft(
+        self,
+        system_profile: SystemProfile,
+        scorecard: RiskScorecard,
+        roadmap: RemediationPlan,
+    ) -> str:
         """Formal compliance certificate template — ready to present."""
         if self.mock_mode:
             return MOCK_REPORTS["certificate_draft"]
-            
-        total_gaps = len([g for g in scorecard.risk_findings if g.met]) # wait, finding is just finding. 
-        total_gaps = len([g for g in scorecard.applicable_articles]) # we use gaps
-        
+
+        total_gaps = len(
+            [g for g in scorecard.risk_findings if g.met]
+        )  # wait, finding is just finding.
+        total_gaps = len([g for g in scorecard.applicable_articles])  # we use gaps
+
         # Proper gap counts
         actionable_gaps = len([g for g in roadmap.items])
-        
-        status_text = "Compliant" if scorecard.compliance_percentage == 100.0 else "Remediation Plan Established — Not Yet Compliant"
+
+        status_text = (
+            "Compliant"
+            if scorecard.compliance_percentage == 100.0
+            else "Remediation Plan Established — Not Yet Compliant"
+        )
 
         applicable_articles_str = ", ".join(scorecard.applicable_articles)
 
@@ -159,8 +184,13 @@ Pipeline: Scanner → Gap Analyzer (Foundry IQ) → Risk Scorer → Remediation 
 """
         return template
 
-    async def generate(self, system_profile: SystemProfile, gap_matrix: GapMatrix, 
-                       scorecard: RiskScorecard, roadmap: RemediationPlan) -> ComplianceReport:
+    async def generate(
+        self,
+        system_profile: SystemProfile,
+        gap_matrix: GapMatrix,
+        scorecard: RiskScorecard,
+        roadmap: RemediationPlan,
+    ) -> ComplianceReport:
         """Generate all three reports."""
         if self.mock_mode:
             report_dict = MOCK_REPORTS.copy()
@@ -169,20 +199,24 @@ Pipeline: Scanner → Gap Analyzer (Foundry IQ) → Risk Scorer → Remediation 
 
         # Generate in parallel
         executive, technical, certificate = await asyncio.gather(
-            self._generate_executive_summary(system_profile, gap_matrix, scorecard, roadmap),
-            self._generate_technical_report(system_profile, gap_matrix, scorecard, roadmap),
-            self._generate_certificate_draft(system_profile, scorecard, roadmap)
+            self._generate_executive_summary(
+                system_profile, gap_matrix, scorecard, roadmap
+            ),
+            self._generate_technical_report(
+                system_profile, gap_matrix, scorecard, roadmap
+            ),
+            self._generate_certificate_draft(system_profile, scorecard, roadmap),
         )
-        
+
         # Count Foundry IQ citations across all gaps
         total_citations = sum(len(g.citations) for g in gap_matrix.gaps)
-        
+
         # Extract sections if needed, or leave empty as it's not strictly specified
         sections = [
             ReportSection(title="Executive Summary", content=executive, citations=[]),
-            ReportSection(title="Technical Findings", content=technical, citations=[])
+            ReportSection(title="Technical Findings", content=technical, citations=[]),
         ]
-        
+
         return ComplianceReport(
             system_name=system_profile.system_name,
             executive_summary=executive,
@@ -194,5 +228,5 @@ Pipeline: Scanner → Gap Analyzer (Foundry IQ) → Risk Scorer → Remediation 
             critical_gaps_count=scorecard.critical_count,
             generated_at=datetime.now(timezone.utc),
             foundry_iq_citations_count=total_citations,
-            is_verified=False  # Set to True after verification agent
+            is_verified=False,  # Set to True after verification agent
         )

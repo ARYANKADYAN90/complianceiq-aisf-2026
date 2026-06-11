@@ -13,18 +13,30 @@ class RemediationPriority(str, Enum):
 
 class RemediationItem(BaseModel):
     """An actionable step to remediate a compliance gap."""
-    
+
     item_id: str = Field(description="Unique identifier for the remediation action")
     gap_reference: str = Field(description="Reference to the requirement_id of the gap")
     action_title: str = Field(description="Short title of the remediation action")
-    action_description: str = Field(description="Detailed description of what needs to be done")
-    owner_role: str = Field(description="Suggested role to own this action (e.g., Engineering, Legal, Product)")
+    action_description: str = Field(
+        description="Detailed description of what needs to be done"
+    )
+    owner_role: str = Field(
+        description="Suggested role to own this action (e.g., Engineering, Legal, Product)"
+    )
     effort_days: int = Field(description="Estimated effort in days")
-    priority: RemediationPriority = Field(description="Priority timeline for the action")
+    priority: RemediationPriority = Field(
+        description="Priority timeline for the action"
+    )
     article_reference: str = Field(description="Related EU AI Act article")
-    citation: str = Field(description="Foundry IQ citation supporting this recommendation")
-    success_criteria: str = Field(description="Criteria to consider this action successfully completed")
-    dependencies: List[str] = Field(description="List of item_ids this action depends on")
+    citation: str = Field(
+        description="Foundry IQ citation supporting this recommendation"
+    )
+    success_criteria: str = Field(
+        description="Criteria to consider this action successfully completed"
+    )
+    dependencies: List[str] = Field(
+        description="List of item_ids this action depends on"
+    )
 
     @classmethod
     def example_data(cls) -> "RemediationItem":
@@ -39,35 +51,51 @@ class RemediationItem(BaseModel):
             article_reference="Article 14",
             citation="Foundry IQ: Article 14(4)(a) mandates human intervention capability.",
             success_criteria="Override button is functional and logs the human decision.",
-            dependencies=[]
+            dependencies=[],
         )
 
 
 class RemediationPlan(BaseModel):
     """Comprehensive remediation roadmap."""
-    
+
     items: List[RemediationItem] = Field(description="All remediation actions required")
     created_at: datetime = Field(description="When the plan was created")
 
     @computed_field
     @property
     def immediate_actions(self) -> List[RemediationItem]:
-        return [item for item in self.items if item.priority == RemediationPriority.IMMEDIATE]
+        return [
+            item
+            for item in self.items
+            if item.priority == RemediationPriority.IMMEDIATE
+        ]
 
     @computed_field
     @property
     def thirty_day_actions(self) -> List[RemediationItem]:
-        return [item for item in self.items if item.priority == RemediationPriority.THIRTY_DAYS]
+        return [
+            item
+            for item in self.items
+            if item.priority == RemediationPriority.THIRTY_DAYS
+        ]
 
     @computed_field
     @property
     def sixty_day_actions(self) -> List[RemediationItem]:
-        return [item for item in self.items if item.priority == RemediationPriority.SIXTY_DAYS]
+        return [
+            item
+            for item in self.items
+            if item.priority == RemediationPriority.SIXTY_DAYS
+        ]
 
     @computed_field
     @property
     def ninety_day_actions(self) -> List[RemediationItem]:
-        return [item for item in self.items if item.priority == RemediationPriority.NINETY_DAYS]
+        return [
+            item
+            for item in self.items
+            if item.priority == RemediationPriority.NINETY_DAYS
+        ]
 
     @computed_field
     @property

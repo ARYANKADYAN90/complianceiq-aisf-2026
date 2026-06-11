@@ -4,8 +4,9 @@ from src.mock.mock_data import (
     MOCK_GAP_MATRIX,
     MOCK_RISK_SCORECARD,
     MOCK_REMEDIATION_PLAN,
-    MOCK_REPORTS
+    MOCK_REPORTS,
 )
+
 
 class MockPipeline:
     """
@@ -44,7 +45,9 @@ class MockPipeline:
             progress_callback("Remediation Planner (Foundry IQ)", "running", None)
         await asyncio.sleep(0.3)
         if progress_callback:
-            progress_callback("Remediation Planner (Foundry IQ)", "complete", MOCK_REMEDIATION_PLAN)
+            progress_callback(
+                "Remediation Planner (Foundry IQ)", "complete", MOCK_REMEDIATION_PLAN
+            )
 
         # Agent 5
         if progress_callback:
@@ -66,7 +69,7 @@ class MockPipeline:
             "scorecard": MOCK_RISK_SCORECARD,
             "remediation_roadmap": MOCK_REMEDIATION_PLAN,
             "reports": MOCK_REPORTS,
-            "pipeline_complete": True
+            "pipeline_complete": True,
         }
 
     def run_instant(self) -> dict:
@@ -79,5 +82,5 @@ class MockPipeline:
             "scorecard": MOCK_RISK_SCORECARD,
             "remediation_roadmap": MOCK_REMEDIATION_PLAN,
             "reports": MOCK_REPORTS,
-            "pipeline_complete": True
+            "pipeline_complete": True,
         }

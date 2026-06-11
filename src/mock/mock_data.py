@@ -8,14 +8,18 @@ MOCK_SYSTEM_PROFILE = {
     "deployment_environment": "production",
     "decision_type": "automated",
     "affected_users": ["job_applicants", "hr_managers", "hiring_managers"],
-    "data_types_processed": ["personal_data", "biometric_inferred", "employment_history"],
+    "data_types_processed": [
+        "personal_data",
+        "biometric_inferred",
+        "employment_history",
+    ],
     "autonomy_level": "high_autonomy",
     "human_oversight": False,
     "right_to_explanation": False,
     "geographic_scope": ["EU", "UK", "US"],
     "documentation_completeness": 0.35,
     "raw_text": "TalentFilter Pro v2.3 automatically screens job applicant CVs, ranks candidates, and makes hiring shortlists without human review. It processes personal data and employment history...",
-    "extraction_confidence": 0.98
+    "extraction_confidence": 0.98,
 }
 
 # 2. Gap Matrix
@@ -30,10 +34,15 @@ MOCK_GAP_MATRIX = {
             "status": "NON_COMPLIANT",
             "severity": "CRITICAL",
             "description": "No documented risk management system for the AI lifecycle.",
-            "missing_evidence": ["Risk assessment report", "Iterative risk mitigation plan"],
+            "missing_evidence": [
+                "Risk assessment report",
+                "Iterative risk mitigation plan",
+            ],
             "remediation_hint": "Establish and document a continuous risk management system.",
-            "citations": ["EU AI Act Art.9(1) - risk management system must be established"],
-            "confidence_score": 0.95
+            "citations": [
+                "EU AI Act Art.9(1) - risk management system must be established"
+            ],
+            "confidence_score": 0.95,
         },
         {
             "requirement_id": "REQ-ART10",
@@ -44,8 +53,10 @@ MOCK_GAP_MATRIX = {
             "description": "Training datasets exist but lack bias monitoring and documentation.",
             "missing_evidence": ["Data bias assessment", "Data provenance logs"],
             "remediation_hint": "Implement strict data governance protocols and bias testing.",
-            "citations": ["EU AI Act Art.10(2) - training data quality and bias mitigation"],
-            "confidence_score": 0.88
+            "citations": [
+                "EU AI Act Art.10(2) - training data quality and bias mitigation"
+            ],
+            "confidence_score": 0.88,
         },
         {
             "requirement_id": "REQ-ART11",
@@ -54,10 +65,15 @@ MOCK_GAP_MATRIX = {
             "status": "NON_COMPLIANT",
             "severity": "CRITICAL",
             "description": "Technical documentation is severely lacking (0.35 completeness).",
-            "missing_evidence": ["Annex IV compliant documentation", "System architecture details"],
+            "missing_evidence": [
+                "Annex IV compliant documentation",
+                "System architecture details",
+            ],
             "remediation_hint": "Draft complete technical documentation prior to market placement.",
-            "citations": ["EU AI Act Art.11(1) - technical documentation must be drawn up"],
-            "confidence_score": 0.99
+            "citations": [
+                "EU AI Act Art.11(1) - technical documentation must be drawn up"
+            ],
+            "confidence_score": 0.99,
         },
         {
             "requirement_id": "REQ-ART12",
@@ -69,7 +85,7 @@ MOCK_GAP_MATRIX = {
             "missing_evidence": ["Automated logging mechanism", "Log retention policy"],
             "remediation_hint": "Implement automated logging for traceability.",
             "citations": ["EU AI Act Art.12(1) - automated record-keeping required"],
-            "confidence_score": 0.92
+            "confidence_score": 0.92,
         },
         {
             "requirement_id": "REQ-ART13",
@@ -80,8 +96,10 @@ MOCK_GAP_MATRIX = {
             "description": "Users are not provided with clear instructions or right to explanation.",
             "missing_evidence": ["Instructions for use", "Transparency disclosures"],
             "remediation_hint": "Draft comprehensive user instructions and transparency notices.",
-            "citations": ["EU AI Act Art.13(1) - transparent operation and user instructions"],
-            "confidence_score": 0.96
+            "citations": [
+                "EU AI Act Art.13(1) - transparent operation and user instructions"
+            ],
+            "confidence_score": 0.96,
         },
         {
             "requirement_id": "REQ-ART14",
@@ -92,8 +110,10 @@ MOCK_GAP_MATRIX = {
             "description": "No human oversight mechanism. System makes automated hiring decisions.",
             "missing_evidence": ["Human-in-the-loop workflow", "Override interface"],
             "remediation_hint": "Halt automated rejection; require human review before final decisions.",
-            "citations": ["EU AI Act Art.14(1) - human oversight tools must be built-in"],
-            "confidence_score": 0.99
+            "citations": [
+                "EU AI Act Art.14(1) - human oversight tools must be built-in"
+            ],
+            "confidence_score": 0.99,
         },
         {
             "requirement_id": "REQ-ART15",
@@ -102,10 +122,15 @@ MOCK_GAP_MATRIX = {
             "status": "PARTIAL",
             "severity": "HIGH",
             "description": "System claims high accuracy but lacks robustness testing against adversarial data.",
-            "missing_evidence": ["Robustness testing results", "Adversarial vulnerability assessment"],
+            "missing_evidence": [
+                "Robustness testing results",
+                "Adversarial vulnerability assessment",
+            ],
             "remediation_hint": "Conduct adversarial testing and document accuracy metrics.",
-            "citations": ["EU AI Act Art.15(1) - high level of accuracy, robustness, cybersecurity"],
-            "confidence_score": 0.85
+            "citations": [
+                "EU AI Act Art.15(1) - high level of accuracy, robustness, cybersecurity"
+            ],
+            "confidence_score": 0.85,
         },
         {
             "requirement_id": "REQ-ART17",
@@ -116,8 +141,10 @@ MOCK_GAP_MATRIX = {
             "description": "No formal quality management system is established.",
             "missing_evidence": ["QMS manual", "Standard operating procedures"],
             "remediation_hint": "Establish a QMS that ensures compliance with the regulation.",
-            "citations": ["EU AI Act Art.17(1) - put a quality management system in place"],
-            "confidence_score": 0.90
+            "citations": [
+                "EU AI Act Art.17(1) - put a quality management system in place"
+            ],
+            "confidence_score": 0.90,
         },
         {
             "requirement_id": "REQ-ART20",
@@ -126,10 +153,15 @@ MOCK_GAP_MATRIX = {
             "status": "NON_COMPLIANT",
             "severity": "MEDIUM",
             "description": "No post-market monitoring system exists for continuous evaluation.",
-            "missing_evidence": ["Post-market monitoring plan", "Continuous evaluation logs"],
+            "missing_evidence": [
+                "Post-market monitoring plan",
+                "Continuous evaluation logs",
+            ],
             "remediation_hint": "Develop a systematic post-market monitoring plan.",
-            "citations": ["EU AI Act Art.20 - establish a post-market monitoring system"],
-            "confidence_score": 0.94
+            "citations": [
+                "EU AI Act Art.20 - establish a post-market monitoring system"
+            ],
+            "confidence_score": 0.94,
         },
         {
             "requirement_id": "REQ-ANNEX4",
@@ -138,12 +170,15 @@ MOCK_GAP_MATRIX = {
             "status": "NON_COMPLIANT",
             "severity": "CRITICAL",
             "description": "Missing required detailed technical specifications from Annex IV.",
-            "missing_evidence": ["System architecture diagrams", "Algorithmic logic description"],
+            "missing_evidence": [
+                "System architecture diagrams",
+                "Algorithmic logic description",
+            ],
             "remediation_hint": "Prepare detailed Annex IV compliance documents.",
             "citations": ["EU AI Act Annex IV - technical documentation requirements"],
-            "confidence_score": 0.98
-        }
-    ]
+            "confidence_score": 0.98,
+        },
+    ],
 }
 
 # 3. Risk Scorecard
@@ -161,7 +196,7 @@ MOCK_RISK_SCORECARD = {
             "criterion": "AI system used for recruitment or selection of natural persons",
             "met": True,
             "evidence": "System automatically screens CVs and makes candidate rankings without human review.",
-            "article_reference": "Annex III Article 6(2)"
+            "article_reference": "Annex III Article 6(2)",
         }
     ],
     "classification_rationale": (
@@ -173,9 +208,19 @@ MOCK_RISK_SCORECARD = {
         "with 'high autonomy' to make shortlisting decisions, it triggers stringent compliance requirements."
     ),
     "applicable_articles": [
-        "Article 6(2)", "Article 9", "Article 10", "Article 11", "Article 12",
-        "Article 13", "Article 14", "Article 15", "Article 17", "Article 20", "Annex III", "Annex IV"
-    ]
+        "Article 6(2)",
+        "Article 9",
+        "Article 10",
+        "Article 11",
+        "Article 12",
+        "Article 13",
+        "Article 14",
+        "Article 15",
+        "Article 17",
+        "Article 20",
+        "Annex III",
+        "Annex IV",
+    ],
 }
 
 # 4. Remediation Plan
@@ -193,7 +238,7 @@ MOCK_REMEDIATION_PLAN = {
             "article_reference": "Article 14",
             "citation": "EU AI Act Art.14(1)",
             "success_criteria": "System blocks final hiring decisions until human approval is logged.",
-            "dependencies": []
+            "dependencies": [],
         },
         {
             "item_id": "REM-002",
@@ -206,7 +251,7 @@ MOCK_REMEDIATION_PLAN = {
             "article_reference": "Article 14(1)(b)",
             "citation": "EU AI Act Art.14(1)(b)",
             "success_criteria": "No automated rejection emails sent.",
-            "dependencies": []
+            "dependencies": [],
         },
         {
             "item_id": "REM-003",
@@ -219,7 +264,7 @@ MOCK_REMEDIATION_PLAN = {
             "article_reference": "Article 9",
             "citation": "EU AI Act Art.9(1)",
             "success_criteria": "Documented RMS approved by legal.",
-            "dependencies": []
+            "dependencies": [],
         },
         {
             "item_id": "REM-004",
@@ -232,7 +277,7 @@ MOCK_REMEDIATION_PLAN = {
             "article_reference": "Article 13",
             "citation": "EU AI Act Art.13(1)",
             "success_criteria": "Candidate dashboard deployed.",
-            "dependencies": []
+            "dependencies": [],
         },
         {
             "item_id": "REM-005",
@@ -245,7 +290,7 @@ MOCK_REMEDIATION_PLAN = {
             "article_reference": "Article 10(2)",
             "citation": "EU AI Act Art.10(2)",
             "success_criteria": "Bias metrics integrated into CI/CD pipeline.",
-            "dependencies": []
+            "dependencies": [],
         },
         {
             "item_id": "REM-006",
@@ -258,7 +303,7 @@ MOCK_REMEDIATION_PLAN = {
             "article_reference": "Annex IV",
             "citation": "EU AI Act Annex IV",
             "success_criteria": "Documentation passes internal audit.",
-            "dependencies": []
+            "dependencies": [],
         },
         {
             "item_id": "REM-007",
@@ -271,7 +316,7 @@ MOCK_REMEDIATION_PLAN = {
             "article_reference": "Article 12",
             "citation": "EU AI Act Art.12(1)",
             "success_criteria": "Audit logs stored in secure object storage.",
-            "dependencies": []
+            "dependencies": [],
         },
         {
             "item_id": "REM-008",
@@ -284,7 +329,7 @@ MOCK_REMEDIATION_PLAN = {
             "article_reference": "Article 43",
             "citation": "EU AI Act Art.43",
             "success_criteria": "Conformity assessment report received.",
-            "dependencies": ["REM-003", "REM-006"]
+            "dependencies": ["REM-003", "REM-006"],
         },
         {
             "item_id": "REM-009",
@@ -297,7 +342,7 @@ MOCK_REMEDIATION_PLAN = {
             "article_reference": "Article 20",
             "citation": "EU AI Act Art.20",
             "success_criteria": "Monitoring dashboards live.",
-            "dependencies": []
+            "dependencies": [],
         },
         {
             "item_id": "REM-010",
@@ -310,9 +355,9 @@ MOCK_REMEDIATION_PLAN = {
             "article_reference": "Article 60",
             "citation": "EU AI Act Art.60",
             "success_criteria": "Registration confirmation received from EU authorities.",
-            "dependencies": ["REM-008"]
-        }
-    ]
+            "dependencies": ["REM-008"],
+        },
+    ],
 }
 
 # 5. Compliance Reports
@@ -330,7 +375,9 @@ MOCK_REPORTS = {
     "executive_summary": (
         "## Executive Summary\n\n"
         "**System Analyzed:** TalentFilter Pro v2.3\n"
-        "**Assessment Date:** " + datetime.now(timezone.utc).strftime("%Y-%m-%d") + "\n\n"
+        "**Assessment Date:** "
+        + datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        + "\n\n"
         "This report provides an executive-level summary of the EU AI Act compliance audit for "
         "TalentFilter Pro v2.3. The system has been classified as **HIGH RISK** under the EU AI Act "
         "(Annex III) because it is used for automated recruitment and candidate ranking.\n\n"
@@ -406,7 +453,9 @@ MOCK_REPORTS = {
         "**EU AI Act (Regulation 2024/1689)**\n\n"
         "**System Name:** TalentFilter Pro v2.3\n"
         "**Developer/Vendor:** Acme HR Tech Ltd\n"
-        "**Date of Assessment:** " + datetime.now(timezone.utc).strftime("%Y-%m-%d") + "\n\n"
+        "**Date of Assessment:** "
+        + datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        + "\n\n"
         "This document certifies that the AI system identified above has undergone an initial compliance "
         "assessment against the requirements set forth in the European Union Artificial Intelligence Act.\n\n"
         "### Assessment Results\n"
@@ -421,5 +470,5 @@ MOCK_REPORTS = {
         "required by Article 43.\n\n"
         "**Assessed by:** ComplianceIQ Automated Audit Engine\n"
         "**Powered by:** Microsoft Foundry IQ"
-    )
+    ),
 }

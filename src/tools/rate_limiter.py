@@ -1,6 +1,7 @@
 import asyncio
 import time
 
+
 class RateLimiter:
     def __init__(self, max_calls_per_minute: int = 60):
         self.max_calls_per_minute = max_calls_per_minute

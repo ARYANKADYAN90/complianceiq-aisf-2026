@@ -1,8 +1,10 @@
 import time
 from typing import Any, Callable
 
+
 class CircuitBreakerOpenError(Exception):
     pass
+
 
 class CircuitBreaker:
     def __init__(self, failure_threshold: int = 5, recovery_timeout: float = 60.0):
@@ -17,8 +19,10 @@ class CircuitBreaker:
             if time.time() - self.last_failure_time > self.recovery_timeout:
                 self.state = "HALF_OPEN"
             else:
-                raise CircuitBreakerOpenError("Circuit breaker is OPEN. Rejecting request.")
-        
+                raise CircuitBreakerOpenError(
+                    "Circuit breaker is OPEN. Rejecting request."
+                )
+
         try:
             result = await func(*args, **kwargs)
             if self.state == "HALF_OPEN":

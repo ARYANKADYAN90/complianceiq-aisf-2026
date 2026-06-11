@@ -3,6 +3,7 @@ import hashlib
 from collections import OrderedDict
 from typing import Any
 
+
 class CacheManager:
     def __init__(self, ttl: int = 300, max_entries: int = 100):
         self.ttl = ttl
@@ -10,7 +11,7 @@ class CacheManager:
         self.cache: OrderedDict[str, tuple[float, Any]] = OrderedDict()
 
     def _generate_key(self, query_text: str, profile_hash: str = "") -> str:
-        data = f"{query_text}:{profile_hash}".encode('utf-8')
+        data = f"{query_text}:{profile_hash}".encode("utf-8")
         return hashlib.sha256(data).hexdigest()
 
     def get(self, query_text: str, profile_hash: str = "") -> Any:

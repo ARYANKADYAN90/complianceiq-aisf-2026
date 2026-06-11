@@ -14,6 +14,7 @@ from agent_framework import ChatAgent
 
 logger = logging.getLogger(__name__)
 
+
 class ScannerAgent:
     """
     Agent 1: Extracts text from uploaded files and uses an LLM to generate
@@ -28,8 +29,8 @@ class ScannerAgent:
 
     async def extract_text(self, file_bytes: bytes, filename: str) -> str:
         """Extract raw text from any supported file format."""
-        ext = filename[filename.rfind("."):].lower() if "." in filename else ""
-        
+        ext = filename[filename.rfind(".") :].lower() if "." in filename else ""
+
         if not file_bytes:
             logger.warning(f"File {filename} is empty.")
             return ""
@@ -39,22 +40,22 @@ class ScannerAgent:
                 reader = PdfReader(io.BytesIO(file_bytes))
                 text = "\n".join(page.extract_text() or "" for page in reader.pages)
                 return text.strip()
-            
+
             elif ext == ".docx":
                 doc = Document(io.BytesIO(file_bytes))
                 text = "\n".join(paragraph.text for paragraph in doc.paragraphs)
                 return text.strip()
-            
+
             elif ext in [".txt", ".md"]:
                 return file_bytes.decode("utf-8", errors="replace").strip()
-            
+
             elif ext == ".json":
                 try:
                     data = json.loads(file_bytes.decode("utf-8"))
                     return json.dumps(data, indent=2)
                 except json.JSONDecodeError:
                     return file_bytes.decode("utf-8", errors="replace").strip()
-            
+
             else:
                 logger.warning(f"Unsupported format {ext} for file {filename}")
                 return ""
@@ -97,11 +98,11 @@ Return ONLY valid JSON. No explanation text. No markdown fences.
                     model_deployment_name=self.settings.azure_foundry_model_deployment,
                     async_credential=credential,
                 ) as client,
-                ChatAgent(chat_client=client) as agent
+                ChatAgent(chat_client=client) as agent,
             ):
                 result = await agent.run(prompt)
                 content = result.content.strip()
-                
+
                 # Cleanup potential markdown fences
                 if content.startswith("```json"):
                     content = content[7:]
@@ -109,7 +110,7 @@ Return ONLY valid JSON. No explanation text. No markdown fences.
                     content = content[3:]
                 if content.endswith("```"):
                     content = content[:-3]
-                    
+
                 data = json.loads(content.strip())
                 return data
         finally:
@@ -130,7 +131,7 @@ Return ONLY valid JSON. No explanation text. No markdown fences.
             score += 0.2
         if profile.get("geographic_scope") and "EU" in profile["geographic_scope"]:
             score += 0.2
-            
+
         return min(score, 1.0)
 
     async def scan(self, files: List[Any]) -> SystemProfile:
@@ -150,25 +151,25 @@ Return ONLY valid JSON. No explanation text. No markdown fences.
             if asyncio.iscoroutine(file_bytes):
                 file_bytes = await file_bytes
             tasks.append(self.extract_text(file_bytes, file.name))
-            
+
         extracted_texts = await asyncio.gather(*tasks)
-        
+
         # Combine text
         combined_text = "\n\n".join(text for text in extracted_texts if text)
         if not combined_text.strip():
             raise ValueError("Could not extract text from any provided files")
-            
+
         # Truncate to 50,000 characters to avoid context limits
         if len(combined_text) > 50000:
             logger.warning("Combined text exceeded 50,000 characters. Truncating.")
             combined_text = combined_text[:50000]
-            
+
         # Extract profile dict
         profile_dict = await self.extract_system_profile(combined_text)
-        
+
         # Set raw text and confidence
         profile_dict["raw_text"] = combined_text
         profile_dict["extraction_confidence"] = self._estimate_confidence(profile_dict)
-        
+
         # Validate with pydantic
         return SystemProfile(**profile_dict)
