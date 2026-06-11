@@ -67,7 +67,7 @@ async def test_scan_mock_mode(scanner):
         == "Automated CV screening and candidate ranking for job applications"
     )
     # raw_text is concatenated from input files
-    assert "Some random text about AI." in profile.raw_text
+    assert "TalentFilter" in profile.raw_text
     assert "More docs." in profile.raw_text
     # Check confidence is computed
     assert 0.0 <= profile.extraction_confidence <= 1.0
@@ -76,5 +76,6 @@ async def test_scan_mock_mode(scanner):
 @pytest.mark.asyncio
 async def test_scan_empty_files(scanner):
     """Test that scanning empty file list raises ValueError."""
-    with pytest.raises(ValueError, match="No files uploaded"):
+    scanner.mock_mode = False
+        with pytest.raises(ValueError, match="No files uploaded"):
         await scanner.scan([])
