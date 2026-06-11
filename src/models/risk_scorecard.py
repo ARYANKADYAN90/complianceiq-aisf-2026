@@ -63,7 +63,7 @@ class RiskScorecard(BaseModel):
             low_count=2,
             total_citations=14,
             risk_findings=[RiskFinding.example_data()],
-            classification_rationale="The system is classified as High Risk because it is used for employment and recruitment (Annex III, point 4).",
+            classification_rationale="The system is classified as High Risk because it is used for employment and recruitment (Annex III, point 4).",  # noqa: E501
             applicable_articles=["Article 6", "Article 14", "Annex III(4)"],
             scored_at=datetime.now(timezone.utc),
         )

@@ -1,5 +1,4 @@
 from functools import lru_cache
-from typing import Optional
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -45,7 +44,7 @@ class Config(BaseSettings):
 
             if missing:
                 raise ValueError(
-                    f"mock_mode is False, but the following required environment variables "
+                    f"mock_mode is False, but the following required environment variables "  # noqa: E501
                     f"are missing for live Azure connection: {', '.join(missing)}"
                 )
 

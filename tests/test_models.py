@@ -1,9 +1,8 @@
 from src.models.system_profile import SystemProfile
-from src.models.gap_matrix import GapMatrix, ComplianceGap
+from src.models.gap_matrix import GapMatrix
 from src.models.risk_scorecard import RiskScorecard, EUAIActRiskTier
-from src.models.remediation_plan import RemediationPlan, RemediationItem
+from src.models.remediation_plan import RemediationPlan
 from src.models.compliance_report import ComplianceReport
-from datetime import datetime, timezone
 
 
 def test_system_profile_valid_creation():

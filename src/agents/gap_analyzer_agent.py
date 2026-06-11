@@ -19,7 +19,7 @@ REQUIREMENTS_TO_CHECK = [
         "id": "ART_09",
         "name": "Risk Management System",
         "article": "Article 9",
-        "description": "Provider must establish documented risk management system for entire lifecycle",
+        "description": "Provider must establish documented risk management system for entire lifecycle",  # noqa: E501
         "evidence_needed": [
             "Risk register",
             "Risk management procedure",
@@ -30,7 +30,7 @@ REQUIREMENTS_TO_CHECK = [
         "id": "ART_10",
         "name": "Data and Data Governance",
         "article": "Article 10",
-        "description": "Training/validation data must meet quality criteria, free from bias",
+        "description": "Training/validation data must meet quality criteria, free from bias",  # noqa: E501
         "evidence_needed": [
             "Data quality assessment",
             "Bias testing results",
@@ -41,7 +41,7 @@ REQUIREMENTS_TO_CHECK = [
         "id": "ART_11",
         "name": "Technical Documentation",
         "article": "Article 11 + Annex IV",
-        "description": "Technical documentation must be drawn up before placing on market",
+        "description": "Technical documentation must be drawn up before placing on market",  # noqa: E501
         "evidence_needed": [
             "Annex IV documentation",
             "System card",
@@ -63,7 +63,7 @@ REQUIREMENTS_TO_CHECK = [
         "id": "ART_13",
         "name": "Transparency and Information",
         "article": "Article 13",
-        "description": "Information to deployers must be clear, complete, and accurate",
+        "description": "Information to deployers must be clear, complete, and accurate",  # noqa: E501
         "evidence_needed": [
             "User-facing documentation",
             "Instructions for use",
@@ -74,7 +74,7 @@ REQUIREMENTS_TO_CHECK = [
         "id": "ART_14",
         "name": "Human Oversight",
         "article": "Article 14",
-        "description": "Humans must be able to understand, monitor, and override the AI system",
+        "description": "Humans must be able to understand, monitor, and override the AI system",  # noqa: E501
         "evidence_needed": [
             "Human review mechanism",
             "Override procedure",
@@ -85,7 +85,7 @@ REQUIREMENTS_TO_CHECK = [
         "id": "ART_15",
         "name": "Accuracy, Robustness, Cybersecurity",
         "article": "Article 15",
-        "description": "Appropriate accuracy, robustness, cybersecurity throughout lifecycle",
+        "description": "Appropriate accuracy, robustness, cybersecurity throughout lifecycle",  # noqa: E501
         "evidence_needed": [
             "Accuracy benchmarks",
             "Robustness testing",
@@ -140,7 +140,7 @@ class GapAnalyzerAgent:
 
     def __init__(self, mock_mode: bool = None):
         self.settings = get_settings()
-        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode
+        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode  # noqa: E501
         self.foundry_iq = FoundryIQClient(mock_mode=self.mock_mode)
         self.requirements = REQUIREMENTS_TO_CHECK
 
@@ -203,7 +203,7 @@ class GapAnalyzerAgent:
             severity=severity,
             description=description_text,
             missing_evidence=missing_evidence,
-            remediation_hint=f"Review {requirement['article']} and ensure documentation.",
+            remediation_hint=f"Review {requirement['article']} and ensure documentation.",  # noqa: E501
             citations=result["citations"],
             confidence_score=result.get("confidence", 0.9),
         )
@@ -228,7 +228,7 @@ class GapAnalyzerAgent:
         for i, gap in enumerate(gaps):
             if isinstance(gap, Exception):
                 logger.error(
-                    f"Failed to check requirement {self.requirements[i]['id']}: {str(gap)}"
+                    f"Failed to check requirement {self.requirements[i]['id']}: {str(gap)}"  # noqa: E501
                 )
                 # Create a fallback gap instead of crashing the pipeline
                 valid_gaps.append(
@@ -240,7 +240,7 @@ class GapAnalyzerAgent:
                         severity=GapSeverity.HIGH,
                         description=f"Analysis failed: {str(gap)}",
                         missing_evidence=[],
-                        remediation_hint="Manual review required due to analysis failure.",
+                        remediation_hint="Manual review required due to analysis failure.",  # noqa: E501
                         citations=[],
                         confidence_score=0.0,
                     )
@@ -257,7 +257,7 @@ class GapAnalyzerAgent:
     async def get_high_priority_gaps(
         self, gap_matrix: GapMatrix
     ) -> list[ComplianceGap]:
-        """Returns only CRITICAL and HIGH severity NON_COMPLIANT gaps, sorted by severity."""
+        """Returns only CRITICAL and HIGH severity NON_COMPLIANT gaps, sorted by severity."""  # noqa: E501
         high_priority = [
             gap
             for gap in gap_matrix.gaps

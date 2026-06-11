@@ -1,4 +1,3 @@
-import os
 import pytest
 from src.config import Config, get_settings
 

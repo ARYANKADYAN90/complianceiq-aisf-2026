@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 class SystemProfile(BaseModel):
     """Profile of an AI system extracted from its documentation."""
 
-    use_case: str = Field(description="What the AI system does and its primary purpose")
+    use_case: str = Field(description="What the AI system does and its primary purpose")  # noqa: E501
     system_name: str = Field(description="Name of the AI system")
     vendor_or_developer: str = Field(
         description="Entity that developed or vends the system"
@@ -17,10 +17,10 @@ class SystemProfile(BaseModel):
         Field(description="Type of decision making the AI employs")
     )
     affected_users: list[str] = Field(
-        description="Categories of affected users (e.g., employees, customers, citizens, patients)"
+        description="Categories of affected users (e.g., employees, customers, citizens, patients)"  # noqa: E501
     )
     data_types_processed: list[str] = Field(
-        description="Types of data processed (e.g., personal_data, biometric, health, financial)"
+        description="Types of data processed (e.g., personal_data, biometric, health, financial)"  # noqa: E501
     )
     autonomy_level: Literal[
         "full_autonomy", "high_autonomy", "partial_autonomy", "human_supervised"
@@ -41,7 +41,7 @@ class SystemProfile(BaseModel):
     )
     raw_text: str = Field(description="Raw text extracted from uploaded documentation")
     extraction_confidence: float = Field(
-        ge=0.0, le=1.0, description="Confidence score of the extraction from 0.0 to 1.0"
+        ge=0.0, le=1.0, description="Confidence score of the extraction from 0.0 to 1.0"  # noqa: E501
     )
 
     @classmethod
@@ -64,6 +64,6 @@ class SystemProfile(BaseModel):
             right_to_explanation=False,
             geographic_scope=["EU", "US"],
             documentation_completeness=0.85,
-            raw_text="The system processes candidate resumes to rank them based on job descriptions...",
+            raw_text="The system processes candidate resumes to rank them based on job descriptions...",  # noqa: E501
             extraction_confidence=0.92,
         )

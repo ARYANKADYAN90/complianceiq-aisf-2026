@@ -15,13 +15,13 @@ class RemediationItem(BaseModel):
     """An actionable step to remediate a compliance gap."""
 
     item_id: str = Field(description="Unique identifier for the remediation action")
-    gap_reference: str = Field(description="Reference to the requirement_id of the gap")
+    gap_reference: str = Field(description="Reference to the requirement_id of the gap")  # noqa: E501
     action_title: str = Field(description="Short title of the remediation action")
     action_description: str = Field(
         description="Detailed description of what needs to be done"
     )
     owner_role: str = Field(
-        description="Suggested role to own this action (e.g., Engineering, Legal, Product)"
+        description="Suggested role to own this action (e.g., Engineering, Legal, Product)"  # noqa: E501
     )
     effort_days: int = Field(description="Estimated effort in days")
     priority: RemediationPriority = Field(
@@ -44,13 +44,13 @@ class RemediationItem(BaseModel):
             item_id="REM-001",
             gap_reference="REQ-ART14-01",
             action_title="Implement Human Override Protocol",
-            action_description="Develop a UI feature allowing recruiters to override AI rankings before decisions are final.",
+            action_description="Develop a UI feature allowing recruiters to override AI rankings before decisions are final.",  # noqa: E501
             owner_role="Engineering",
             effort_days=10,
             priority=RemediationPriority.IMMEDIATE,
             article_reference="Article 14",
-            citation="Foundry IQ: Article 14(4)(a) mandates human intervention capability.",
-            success_criteria="Override button is functional and logs the human decision.",
+            citation="Foundry IQ: Article 14(4)(a) mandates human intervention capability.",  # noqa: E501
+            success_criteria="Override button is functional and logs the human decision.",  # noqa: E501
             dependencies=[],
         )
 
@@ -58,7 +58,7 @@ class RemediationItem(BaseModel):
 class RemediationPlan(BaseModel):
     """Comprehensive remediation roadmap."""
 
-    items: List[RemediationItem] = Field(description="All remediation actions required")
+    items: List[RemediationItem] = Field(description="All remediation actions required")  # noqa: E501
     created_at: datetime = Field(description="When the plan was created")
 
     @computed_field

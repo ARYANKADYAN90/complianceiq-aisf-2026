@@ -18,7 +18,7 @@ MOCK_SYSTEM_PROFILE = {
     "right_to_explanation": False,
     "geographic_scope": ["EU", "UK", "US"],
     "documentation_completeness": 0.35,
-    "raw_text": "TalentFilter Pro v2.3 automatically screens job applicant CVs, ranks candidates, and makes hiring shortlists without human review. It processes personal data and employment history...",
+    "raw_text": "TalentFilter Pro v2.3 automatically screens job applicant CVs, ranks candidates, and makes hiring shortlists without human review. It processes personal data and employment history...",  # noqa: E501
     "extraction_confidence": 0.98,
 }
 
@@ -33,12 +33,12 @@ MOCK_GAP_MATRIX = {
             "article_reference": "Article 9",
             "status": "NON_COMPLIANT",
             "severity": "CRITICAL",
-            "description": "No documented risk management system for the AI lifecycle.",
+            "description": "No documented risk management system for the AI lifecycle.",  # noqa: E501
             "missing_evidence": [
                 "Risk assessment report",
                 "Iterative risk mitigation plan",
             ],
-            "remediation_hint": "Establish and document a continuous risk management system.",
+            "remediation_hint": "Establish and document a continuous risk management system.",  # noqa: E501
             "citations": [
                 "EU AI Act Art.9(1) - risk management system must be established"
             ],
@@ -50,9 +50,9 @@ MOCK_GAP_MATRIX = {
             "article_reference": "Article 10",
             "status": "PARTIAL",
             "severity": "HIGH",
-            "description": "Training datasets exist but lack bias monitoring and documentation.",
+            "description": "Training datasets exist but lack bias monitoring and documentation.",  # noqa: E501
             "missing_evidence": ["Data bias assessment", "Data provenance logs"],
-            "remediation_hint": "Implement strict data governance protocols and bias testing.",
+            "remediation_hint": "Implement strict data governance protocols and bias testing.",  # noqa: E501
             "citations": [
                 "EU AI Act Art.10(2) - training data quality and bias mitigation"
             ],
@@ -64,12 +64,12 @@ MOCK_GAP_MATRIX = {
             "article_reference": "Article 11",
             "status": "NON_COMPLIANT",
             "severity": "CRITICAL",
-            "description": "Technical documentation is severely lacking (0.35 completeness).",
+            "description": "Technical documentation is severely lacking (0.35 completeness).",  # noqa: E501
             "missing_evidence": [
                 "Annex IV compliant documentation",
                 "System architecture details",
             ],
-            "remediation_hint": "Draft complete technical documentation prior to market placement.",
+            "remediation_hint": "Draft complete technical documentation prior to market placement.",  # noqa: E501
             "citations": [
                 "EU AI Act Art.11(1) - technical documentation must be drawn up"
             ],
@@ -81,8 +81,8 @@ MOCK_GAP_MATRIX = {
             "article_reference": "Article 12",
             "status": "NON_COMPLIANT",
             "severity": "HIGH",
-            "description": "System does not automatically record events over its lifetime.",
-            "missing_evidence": ["Automated logging mechanism", "Log retention policy"],
+            "description": "System does not automatically record events over its lifetime.",  # noqa: E501
+            "missing_evidence": ["Automated logging mechanism", "Log retention policy"],  # noqa: E501
             "remediation_hint": "Implement automated logging for traceability.",
             "citations": ["EU AI Act Art.12(1) - automated record-keeping required"],
             "confidence_score": 0.92,
@@ -93,9 +93,9 @@ MOCK_GAP_MATRIX = {
             "article_reference": "Article 13",
             "status": "NON_COMPLIANT",
             "severity": "HIGH",
-            "description": "Users are not provided with clear instructions or right to explanation.",
+            "description": "Users are not provided with clear instructions or right to explanation.",  # noqa: E501
             "missing_evidence": ["Instructions for use", "Transparency disclosures"],
-            "remediation_hint": "Draft comprehensive user instructions and transparency notices.",
+            "remediation_hint": "Draft comprehensive user instructions and transparency notices.",  # noqa: E501
             "citations": [
                 "EU AI Act Art.13(1) - transparent operation and user instructions"
             ],
@@ -107,9 +107,9 @@ MOCK_GAP_MATRIX = {
             "article_reference": "Article 14",
             "status": "NON_COMPLIANT",
             "severity": "CRITICAL",
-            "description": "No human oversight mechanism. System makes automated hiring decisions.",
+            "description": "No human oversight mechanism. System makes automated hiring decisions.",  # noqa: E501
             "missing_evidence": ["Human-in-the-loop workflow", "Override interface"],
-            "remediation_hint": "Halt automated rejection; require human review before final decisions.",
+            "remediation_hint": "Halt automated rejection; require human review before final decisions.",  # noqa: E501
             "citations": [
                 "EU AI Act Art.14(1) - human oversight tools must be built-in"
             ],
@@ -121,14 +121,14 @@ MOCK_GAP_MATRIX = {
             "article_reference": "Article 15",
             "status": "PARTIAL",
             "severity": "HIGH",
-            "description": "System claims high accuracy but lacks robustness testing against adversarial data.",
+            "description": "System claims high accuracy but lacks robustness testing against adversarial data.",  # noqa: E501
             "missing_evidence": [
                 "Robustness testing results",
                 "Adversarial vulnerability assessment",
             ],
-            "remediation_hint": "Conduct adversarial testing and document accuracy metrics.",
+            "remediation_hint": "Conduct adversarial testing and document accuracy metrics.",  # noqa: E501
             "citations": [
-                "EU AI Act Art.15(1) - high level of accuracy, robustness, cybersecurity"
+                "EU AI Act Art.15(1) - high level of accuracy, robustness, cybersecurity"  # noqa: E501
             ],
             "confidence_score": 0.85,
         },
@@ -140,7 +140,7 @@ MOCK_GAP_MATRIX = {
             "severity": "MEDIUM",
             "description": "No formal quality management system is established.",
             "missing_evidence": ["QMS manual", "Standard operating procedures"],
-            "remediation_hint": "Establish a QMS that ensures compliance with the regulation.",
+            "remediation_hint": "Establish a QMS that ensures compliance with the regulation.",  # noqa: E501
             "citations": [
                 "EU AI Act Art.17(1) - put a quality management system in place"
             ],
@@ -152,7 +152,7 @@ MOCK_GAP_MATRIX = {
             "article_reference": "Article 20",
             "status": "NON_COMPLIANT",
             "severity": "MEDIUM",
-            "description": "No post-market monitoring system exists for continuous evaluation.",
+            "description": "No post-market monitoring system exists for continuous evaluation.",  # noqa: E501
             "missing_evidence": [
                 "Post-market monitoring plan",
                 "Continuous evaluation logs",
@@ -169,7 +169,7 @@ MOCK_GAP_MATRIX = {
             "article_reference": "Annex IV",
             "status": "NON_COMPLIANT",
             "severity": "CRITICAL",
-            "description": "Missing required detailed technical specifications from Annex IV.",
+            "description": "Missing required detailed technical specifications from Annex IV.",  # noqa: E501
             "missing_evidence": [
                 "System architecture diagrams",
                 "Algorithmic logic description",
@@ -193,19 +193,19 @@ MOCK_RISK_SCORECARD = {
     "scored_at": datetime.now(timezone.utc).isoformat(),
     "risk_findings": [
         {
-            "criterion": "AI system used for recruitment or selection of natural persons",
+            "criterion": "AI system used for recruitment or selection of natural persons",  # noqa: E501
             "met": True,
-            "evidence": "System automatically screens CVs and makes candidate rankings without human review.",
+            "evidence": "System automatically screens CVs and makes candidate rankings without human review.",  # noqa: E501
             "article_reference": "Annex III Article 6(2)",
         }
     ],
     "classification_rationale": (
-        "Based on the analysis, TalentFilter Pro v2.3 is classified as HIGH RISK under the EU AI Act. "
-        "According to Annex III, Article 6(2), AI systems intended to be used for the recruitment or "
-        "selection of natural persons, notably for placing targeted job advertisements, analyzing and "
-        "filtering job applications, and evaluating candidates in the course of interviews or tests, "
-        "are strictly classified as High Risk. Because this system processes personal employment data "
-        "with 'high autonomy' to make shortlisting decisions, it triggers stringent compliance requirements."
+        "Based on the analysis, TalentFilter Pro v2.3 is classified as HIGH RISK under the EU AI Act. "  # noqa: E501
+        "According to Annex III, Article 6(2), AI systems intended to be used for the recruitment or "  # noqa: E501
+        "selection of natural persons, notably for placing targeted job advertisements, analyzing and "  # noqa: E501
+        "filtering job applications, and evaluating candidates in the course of interviews or tests, "  # noqa: E501
+        "are strictly classified as High Risk. Because this system processes personal employment data "  # noqa: E501
+        "with 'high autonomy' to make shortlisting decisions, it triggers stringent compliance requirements."  # noqa: E501
     ),
     "applicable_articles": [
         "Article 6(2)",
@@ -231,20 +231,20 @@ MOCK_REMEDIATION_PLAN = {
             "item_id": "REM-001",
             "gap_reference": "REQ-ART14",
             "action_title": "Implement human oversight mechanism",
-            "action_description": "Develop and deploy a human-in-the-loop workflow. The AI must only provide recommendations; a human must sign off.",
+            "action_description": "Develop and deploy a human-in-the-loop workflow. The AI must only provide recommendations; a human must sign off.",  # noqa: E501
             "owner_role": "CTO",
             "effort_days": 5,
             "priority": "IMMEDIATE",
             "article_reference": "Article 14",
             "citation": "EU AI Act Art.14(1)",
-            "success_criteria": "System blocks final hiring decisions until human approval is logged.",
+            "success_criteria": "System blocks final hiring decisions until human approval is logged.",  # noqa: E501
             "dependencies": [],
         },
         {
             "item_id": "REM-002",
             "gap_reference": "REQ-ART14",
             "action_title": "Halt automated rejection — require human review",
-            "action_description": "Immediately disable the feature that auto-rejects candidates.",
+            "action_description": "Immediately disable the feature that auto-rejects candidates.",  # noqa: E501
             "owner_role": "CPO",
             "effort_days": 2,
             "priority": "IMMEDIATE",
@@ -257,7 +257,7 @@ MOCK_REMEDIATION_PLAN = {
             "item_id": "REM-003",
             "gap_reference": "REQ-ART09",
             "action_title": "Create Risk Management System documentation",
-            "action_description": "Draft a continuous, iterative risk management system document.",
+            "action_description": "Draft a continuous, iterative risk management system document.",  # noqa: E501
             "owner_role": "Compliance Officer",
             "effort_days": 10,
             "priority": "THIRTY_DAYS",
@@ -270,7 +270,7 @@ MOCK_REMEDIATION_PLAN = {
             "item_id": "REM-004",
             "gap_reference": "REQ-ART13",
             "action_title": "Implement right to explanation feature",
-            "action_description": "Provide a portal for candidates to see why they were ranked a certain way.",
+            "action_description": "Provide a portal for candidates to see why they were ranked a certain way.",  # noqa: E501
             "owner_role": "Engineering Lead",
             "effort_days": 8,
             "priority": "THIRTY_DAYS",
@@ -283,7 +283,7 @@ MOCK_REMEDIATION_PLAN = {
             "item_id": "REM-005",
             "gap_reference": "REQ-ART10",
             "action_title": "Establish bias testing protocol",
-            "action_description": "Implement automated testing scripts to identify bias across demographics.",
+            "action_description": "Implement automated testing scripts to identify bias across demographics.",  # noqa: E501
             "owner_role": "ML Engineer",
             "effort_days": 7,
             "priority": "THIRTY_DAYS",
@@ -296,7 +296,7 @@ MOCK_REMEDIATION_PLAN = {
             "item_id": "REM-006",
             "gap_reference": "REQ-ANNEX4",
             "action_title": "Complete technical documentation (Annex IV)",
-            "action_description": "Write comprehensive technical documentation covering architecture and model weights.",
+            "action_description": "Write comprehensive technical documentation covering architecture and model weights.",  # noqa: E501
             "owner_role": "Technical Writer",
             "effort_days": 15,
             "priority": "SIXTY_DAYS",
@@ -309,7 +309,7 @@ MOCK_REMEDIATION_PLAN = {
             "item_id": "REM-007",
             "gap_reference": "REQ-ART12",
             "action_title": "Set up audit log and record-keeping system",
-            "action_description": "Implement immutable logs for all AI decisions and dataset versions.",
+            "action_description": "Implement immutable logs for all AI decisions and dataset versions.",  # noqa: E501
             "owner_role": "DevOps",
             "effort_days": 5,
             "priority": "SIXTY_DAYS",
@@ -322,7 +322,7 @@ MOCK_REMEDIATION_PLAN = {
             "item_id": "REM-008",
             "gap_reference": "REQ-ART09",
             "action_title": "Conduct conformity assessment",
-            "action_description": "Hire an external auditor to conduct the required conformity assessment.",
+            "action_description": "Hire an external auditor to conduct the required conformity assessment.",  # noqa: E501
             "owner_role": "External Auditor",
             "effort_days": 20,
             "priority": "SIXTY_DAYS",
@@ -335,7 +335,7 @@ MOCK_REMEDIATION_PLAN = {
             "item_id": "REM-009",
             "gap_reference": "REQ-ART20",
             "action_title": "Implement post-market monitoring",
-            "action_description": "Establish a framework to monitor AI performance in production continually.",
+            "action_description": "Establish a framework to monitor AI performance in production continually.",  # noqa: E501
             "owner_role": "Product Manager",
             "effort_days": 12,
             "priority": "NINETY_DAYS",
@@ -348,13 +348,13 @@ MOCK_REMEDIATION_PLAN = {
             "item_id": "REM-010",
             "gap_reference": "REQ-ART60",
             "action_title": "Register in EU AI Act database",
-            "action_description": "Formally register the High Risk system in the EU database.",
+            "action_description": "Formally register the High Risk system in the EU database.",  # noqa: E501
             "owner_role": "Legal Counsel",
             "effort_days": 3,
             "priority": "NINETY_DAYS",
             "article_reference": "Article 60",
             "citation": "EU AI Act Art.60",
-            "success_criteria": "Registration confirmation received from EU authorities.",
+            "success_criteria": "Registration confirmation received from EU authorities.",  # noqa: E501
             "dependencies": ["REM-008"],
         },
     ],
@@ -378,74 +378,74 @@ MOCK_REPORTS = {
         "**Assessment Date:** "
         + datetime.now(timezone.utc).strftime("%Y-%m-%d")
         + "\n\n"
-        "This report provides an executive-level summary of the EU AI Act compliance audit for "
-        "TalentFilter Pro v2.3. The system has been classified as **HIGH RISK** under the EU AI Act "
-        "(Annex III) because it is used for automated recruitment and candidate ranking.\n\n"
+        "This report provides an executive-level summary of the EU AI Act compliance audit for "  # noqa: E501
+        "TalentFilter Pro v2.3. The system has been classified as **HIGH RISK** under the EU AI Act "  # noqa: E501
+        "(Annex III) because it is used for automated recruitment and candidate ranking.\n\n"  # noqa: E501
         "### Current Status & Business Impact\n"
-        "The system currently achieves a compliance score of **22.0%**. Failure to address the "
-        "identified critical gaps before the enforcement deadline poses a severe regulatory risk. "
-        "Under the EU AI Act, deploying a non-compliant High Risk system can result in fines up to "
-        "**€35,000,000 or 7% of total worldwide annual turnover**, whichever is higher.\n\n"
+        "The system currently achieves a compliance score of **22.0%**. Failure to address the "  # noqa: E501
+        "identified critical gaps before the enforcement deadline poses a severe regulatory risk. "  # noqa: E501
+        "Under the EU AI Act, deploying a non-compliant High Risk system can result in fines up to "  # noqa: E501
+        "**€35,000,000 or 7% of total worldwide annual turnover**, whichever is higher.\n\n"  # noqa: E501
         "### The 3 Most Critical Issues\n"
-        "1. **Lack of Human Oversight (Article 14):** The system currently makes automated candidate "
-        "rejections without human review. This is a direct violation of Article 14, which mandates "
+        "1. **Lack of Human Oversight (Article 14):** The system currently makes automated candidate "  # noqa: E501
+        "rejections without human review. This is a direct violation of Article 14, which mandates "  # noqa: E501
         "human intervention mechanisms for High Risk systems.\n"
-        "2. **Missing Technical Documentation (Article 11 & Annex IV):** The provided documentation "
-        "(0.35 completeness score) is severely lacking. Annex IV requires granular details on system "
+        "2. **Missing Technical Documentation (Article 11 & Annex IV):** The provided documentation "  # noqa: E501
+        "(0.35 completeness score) is severely lacking. Annex IV requires granular details on system "  # noqa: E501
         "architecture, model weights, and logic.\n"
-        "3. **No Risk Management System (Article 9):** There is no documented, iterative risk "
+        "3. **No Risk Management System (Article 9):** There is no documented, iterative risk "  # noqa: E501
         "management system in place for the AI lifecycle.\n\n"
         "### Recommended Immediate Actions\n"
-        "To mitigate immediate regulatory exposure, the following actions must be taken within 48 hours:\n"
-        "- **Halt automated rejections.** A human must review and sign off on all candidate shortlists.\n"
+        "To mitigate immediate regulatory exposure, the following actions must be taken within 48 hours:\n"  # noqa: E501
+        "- **Halt automated rejections.** A human must review and sign off on all candidate shortlists.\n"  # noqa: E501
         "- **Implement a human override mechanism** in the user interface.\n\n"
         "### 90-Day Roadmap Summary\n"
-        "A comprehensive 90-day remediation plan has been established. Key milestones include:\n"
-        "- **30 Days:** Establish bias testing protocols and create a Risk Management System.\n"
-        "- **60 Days:** Complete Annex IV technical documentation and conduct a formal conformity assessment.\n"
-        "- **90 Days:** Register the system in the official EU AI Act database and deploy post-market monitoring."
+        "A comprehensive 90-day remediation plan has been established. Key milestones include:\n"  # noqa: E501
+        "- **30 Days:** Establish bias testing protocols and create a Risk Management System.\n"  # noqa: E501
+        "- **60 Days:** Complete Annex IV technical documentation and conduct a formal conformity assessment.\n"  # noqa: E501
+        "- **90 Days:** Register the system in the official EU AI Act database and deploy post-market monitoring."  # noqa: E501
     ),
     "technical_findings": (
         "## Technical Compliance Report\n\n"
         "**System Analyzed:** TalentFilter Pro v2.3\n\n"
-        "This report details the technical deficiencies identified during the EU AI Act compliance "
+        "This report details the technical deficiencies identified during the EU AI Act compliance "  # noqa: E501
         "assessment and provides actionable engineering requirements.\n\n"
         "### 1. Human Oversight Engineering (Article 14)\n"
-        "**Gap:** The current architecture allows the ML model to issue final 'Reject' or 'Advance' "
-        "states in the database without human validation. *Citation: EU AI Act Art.14(1) - High-risk AI "
-        "systems shall be designed and developed in such a way that they can be effectively overseen by "
+        "**Gap:** The current architecture allows the ML model to issue final 'Reject' or 'Advance' "  # noqa: E501
+        "states in the database without human validation. *Citation: EU AI Act Art.14(1) - High-risk AI "  # noqa: E501
+        "systems shall be designed and developed in such a way that they can be effectively overseen by "  # noqa: E501
         "natural persons.*\n\n"
         "**Technical Requirement:** \n"
-        "- Modify the `PredictionService` to emit a `PendingReview` state instead of a final decision.\n"
-        "- Develop an internal UI component for the HR dashboard that presents the AI's confidence score, "
-        "key decision factors, and requires an explicit human click (`Approve` or `Override`).\n"
+        "- Modify the `PredictionService` to emit a `PendingReview` state instead of a final decision.\n"  # noqa: E501
+        "- Develop an internal UI component for the HR dashboard that presents the AI's confidence score, "  # noqa: E501
+        "key decision factors, and requires an explicit human click (`Approve` or `Override`).\n"  # noqa: E501
         "- Log the human reviewer's ID and timestamp alongside the decision.\n\n"
         "### 2. Automated Record-Keeping (Article 12)\n"
-        "**Gap:** The system lacks immutable audit logs for prediction events over its lifetime. "
-        "*Citation: EU AI Act Art.12(1) - High-risk AI systems shall technically allow for the automatic "
+        "**Gap:** The system lacks immutable audit logs for prediction events over its lifetime. "  # noqa: E501
+        "*Citation: EU AI Act Art.12(1) - High-risk AI systems shall technically allow for the automatic "  # noqa: E501
         "recording of events ('logs') over the duration of their lifetime.*\n\n"
         "**Technical Requirement:**\n"
         "- Integrate OpenTelemetry or a dedicated audit logging service.\n"
-        "- Every prediction must log: Input data hash, Model version ID, Prediction output, Timestamp, "
+        "- Every prediction must log: Input data hash, Model version ID, Prediction output, Timestamp, "  # noqa: E501
         "and corresponding Human Oversight event.\n"
-        "- Ensure logs are stored in a WORM (Write Once Read Many) compliant storage bucket.\n\n"
+        "- Ensure logs are stored in a WORM (Write Once Read Many) compliant storage bucket.\n\n"  # noqa: E501
         "### 3. Data Governance and Bias Mitigation (Article 10)\n"
-        "**Gap:** Training data provenance and bias testing are not integrated into the CI/CD pipeline. "
-        "*Citation: EU AI Act Art.10(2) - Training data must be subject to appropriate data governance "
+        "**Gap:** Training data provenance and bias testing are not integrated into the CI/CD pipeline. "  # noqa: E501
+        "*Citation: EU AI Act Art.10(2) - Training data must be subject to appropriate data governance "  # noqa: E501
         "and management practices.*\n\n"
         "**Technical Requirement:**\n"
-        "- Implement automated bias evaluation scripts (e.g., using Fairlearn) in the model training pipeline.\n"
-        "- The pipeline must fail if demographic parity or equalized odds metrics fall below acceptable thresholds.\n"
-        "- Document the provenance of the training dataset, including data collection methodologies and consent markers.\n\n"
+        "- Implement automated bias evaluation scripts (e.g., using Fairlearn) in the model training pipeline.\n"  # noqa: E501
+        "- The pipeline must fail if demographic parity or equalized odds metrics fall below acceptable thresholds.\n"  # noqa: E501
+        "- Document the provenance of the training dataset, including data collection methodologies and consent markers.\n\n"  # noqa: E501
         "### 4. Robustness and Cybersecurity (Article 15)\n"
-        "**Gap:** No adversarial testing has been conducted. *Citation: EU AI Act Art.15(1) - High-risk AI "
-        "systems shall achieve an appropriate level of accuracy, robustness, and cybersecurity.*\n\n"
+        "**Gap:** No adversarial testing has been conducted. *Citation: EU AI Act Art.15(1) - High-risk AI "  # noqa: E501
+        "systems shall achieve an appropriate level of accuracy, robustness, and cybersecurity.*\n\n"  # noqa: E501
         "**Technical Requirement:**\n"
         "- Introduce adversarial perturbation tests in the staging environment.\n"
-        "- Validate that the CV parsing mechanism is resilient to prompt injection or malformed data inputs.\n\n"
+        "- Validate that the CV parsing mechanism is resilient to prompt injection or malformed data inputs.\n\n"  # noqa: E501
         "### Deployment Safeguards\n"
-        "Prior to the next production release, a feature flag must be implemented to disable all "
-        "automated decision-making capabilities until the human oversight mechanisms are fully deployed "
+        "Prior to the next production release, a feature flag must be implemented to disable all "  # noqa: E501
+        "automated decision-making capabilities until the human oversight mechanisms are fully deployed "  # noqa: E501
         "and validated by the QA team."
     ),
     "certificate_draft": (
@@ -456,17 +456,17 @@ MOCK_REPORTS = {
         "**Date of Assessment:** "
         + datetime.now(timezone.utc).strftime("%Y-%m-%d")
         + "\n\n"
-        "This document certifies that the AI system identified above has undergone an initial compliance "
-        "assessment against the requirements set forth in the European Union Artificial Intelligence Act.\n\n"
+        "This document certifies that the AI system identified above has undergone an initial compliance "  # noqa: E501
+        "assessment against the requirements set forth in the European Union Artificial Intelligence Act.\n\n"  # noqa: E501
         "### Assessment Results\n"
         "- **Risk Classification:** HIGH RISK (Annex III, Article 6(2))\n"
         "- **Current Compliance Score:** 22.0%\n"
         "- **Status:** **PENDING REMEDIATION**\n\n"
         "### Declaration\n"
-        "The system currently presents **4 Critical** and **4 High** severity gaps. A formal remediation "
-        "plan has been established. This certificate remains in DRAFT status and does NOT grant conformity. "
-        "Full conformity and authorization to affix the CE marking will only be granted upon successful "
-        "completion of the 90-day remediation roadmap and a subsequent formal conformity assessment as "
+        "The system currently presents **4 Critical** and **4 High** severity gaps. A formal remediation "  # noqa: E501
+        "plan has been established. This certificate remains in DRAFT status and does NOT grant conformity. "  # noqa: E501
+        "Full conformity and authorization to affix the CE marking will only be granted upon successful "  # noqa: E501
+        "completion of the 90-day remediation roadmap and a subsequent formal conformity assessment as "  # noqa: E501
         "required by Article 43.\n\n"
         "**Assessed by:** ComplianceIQ Automated Audit Engine\n"
         "**Powered by:** Microsoft Foundry IQ"

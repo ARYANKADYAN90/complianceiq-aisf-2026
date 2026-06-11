@@ -1,10 +1,8 @@
-import asyncio
 from datetime import datetime, timezone
 import logging
 from src.models.system_profile import SystemProfile
 from src.models.gap_matrix import (
     GapMatrix,
-    ComplianceGap,
     ComplianceStatus,
     GapSeverity,
 )
@@ -143,7 +141,7 @@ class RiskScorerAgent:
 
     def __init__(self, mock_mode: bool = None):
         self.settings = get_settings()
-        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode
+        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode  # noqa: E501
 
     def _classify_risk_tier(
         self, system_profile: SystemProfile
@@ -180,7 +178,7 @@ class RiskScorerAgent:
                         RiskFinding(
                             criterion=data["description"],
                             met=True,
-                            evidence=f"Use case matches High Risk domain '{domain}' via keyword '{keyword}'.",
+                            evidence=f"Use case matches High Risk domain '{domain}' via keyword '{keyword}'.",  # noqa: E501
                             article_reference=data["article"],
                         )
                     )
@@ -210,9 +208,9 @@ class RiskScorerAgent:
             if is_high_risk:
                 findings.append(
                     RiskFinding(
-                        criterion="High autonomy without human oversight in high-risk domain",
+                        criterion="High autonomy without human oversight in high-risk domain",  # noqa: E501
                         met=True,
-                        evidence="System operates with high autonomy and no human oversight.",
+                        evidence="System operates with high autonomy and no human oversight.",  # noqa: E501
                         article_reference="Article 14",
                     )
                 )
@@ -242,7 +240,7 @@ class RiskScorerAgent:
         if "deepfake" in use_case_lower or "generate image" in use_case_lower:
             findings.append(
                 RiskFinding(
-                    criterion="AI system that generates or manipulates image, audio or video content",
+                    criterion="AI system that generates or manipulates image, audio or video content",  # noqa: E501
                     met=True,
                     evidence="System generates content (deepfake/generative).",
                     article_reference="Article 52",
@@ -322,7 +320,7 @@ class RiskScorerAgent:
         total_citations = sum(len(g.citations) for g in gap_matrix.gaps)
 
         rationale = f"System classified as {tier.value} under EU AI Act. "
-        rationale += f"Primary classification trigger: {findings[0].criterion if findings else 'General assessment'}. "
+        rationale += f"Primary classification trigger: {findings[0].criterion if findings else 'General assessment'}. "  # noqa: E501
         rationale += f"Applicable mandatory requirements: {', '.join(articles)}."
 
         return RiskScorecard(

@@ -1,8 +1,7 @@
 import pytest
 from src.agents.risk_scorer_agent import RiskScorerAgent
 from src.models.system_profile import SystemProfile
-from src.models.gap_matrix import GapMatrix, ComplianceGap
-from datetime import datetime, timezone
+from src.models.gap_matrix import GapMatrix
 
 
 @pytest.fixture

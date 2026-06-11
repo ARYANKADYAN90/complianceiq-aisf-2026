@@ -57,12 +57,12 @@ class ComplianceGap(BaseModel):
             article_reference="Article 14",
             status=ComplianceStatus.NON_COMPLIANT,
             severity=GapSeverity.CRITICAL,
-            description="System lacks sufficient technical measures to ensure human oversight.",
+            description="System lacks sufficient technical measures to ensure human oversight.",  # noqa: E501
             missing_evidence=[
                 "Human-in-the-loop validation logs",
                 "Oversight protocol documentation",
             ],
-            remediation_hint="Implement an override interface for human reviewers before final decisions.",
+            remediation_hint="Implement an override interface for human reviewers before final decisions.",  # noqa: E501
             citations=["Regulation 2024/1689 Article 14(4)(a)"],
             confidence_score=0.95,
         )

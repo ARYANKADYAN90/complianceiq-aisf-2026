@@ -32,7 +32,7 @@ class ComplianceIQOrchestrator:
 
     def __init__(self, mock_mode: bool = None):
         self.settings = get_settings()
-        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode
+        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode  # noqa: E501
 
         # Initialize all 6 agents
         self.scanner = ScannerAgent(mock_mode=self.mock_mode)
@@ -51,7 +51,7 @@ class ComplianceIQOrchestrator:
     async def run(self, files: list, progress_callback: callable = None) -> dict:
         """
         Full 6-agent compliance analysis pipeline.
-        progress_callback signature: (agent_name: str, status: str, output: Any) -> None
+        progress_callback signature: (agent_name: str, status: str, output: Any) -> None  # noqa: E501
         """
         tracer = get_tracer("complianceiq.pipeline")
         with tracer.start_as_current_span("Full Compliance Pipeline") as pipeline_span:

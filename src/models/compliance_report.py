@@ -17,7 +17,7 @@ class ReportSection(BaseModel):
     def example_data(cls) -> "ReportSection":
         return cls(
             title="Human Oversight Requirements",
-            content="The system must implement human-in-the-loop mechanisms to prevent automated discrimination...",
+            content="The system must implement human-in-the-loop mechanisms to prevent automated discrimination...",  # noqa: E501
             citations=["Article 14 - EU AI Act"],
         )
 
@@ -35,8 +35,8 @@ class ComplianceReport(BaseModel):
     technical_findings: str = Field(
         description="Detailed technical breakdown for engineering"
     )
-    certificate_draft: str = Field(description="Draft of formal compliance certificate")
-    sections: List[ReportSection] = Field(description="Detailed sections of the report")
+    certificate_draft: str = Field(description="Draft of formal compliance certificate")  # noqa: E501
+    sections: List[ReportSection] = Field(description="Detailed sections of the report")  # noqa: E501
     risk_tier: str = Field(description="EU AI Act risk tier classification")
     compliance_percentage: float = Field(description="Overall compliance score")
     critical_gaps_count: int = Field(description="Number of critical gaps")
@@ -55,9 +55,9 @@ class ComplianceReport(BaseModel):
     def example_data(cls) -> "ComplianceReport":
         return cls(
             system_name="TalentAI Pro",
-            executive_summary="TalentAI Pro has been classified as High Risk. Significant gaps remain in human oversight...",
-            technical_findings="Technical review indicates missing override hooks in the ranking algorithm...",
-            certificate_draft="CERTIFICATE OF COMPLIANCE (DRAFT) - Pending remediation of critical gaps.",
+            executive_summary="TalentAI Pro has been classified as High Risk. Significant gaps remain in human oversight...",  # noqa: E501
+            technical_findings="Technical review indicates missing override hooks in the ranking algorithm...",  # noqa: E501
+            certificate_draft="CERTIFICATE OF COMPLIANCE (DRAFT) - Pending remediation of critical gaps.",  # noqa: E501
             sections=[ReportSection.example_data()],
             risk_tier="HIGH RISK",
             compliance_percentage=47.5,

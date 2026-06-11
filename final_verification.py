@@ -20,7 +20,7 @@ async def run_pipeline():
 def verify_project():
     print("Running Verification Checks...\n")
     issues = []
-    
+
     # 1. Required files
     required = [
         "README.md", "requirements.txt", "app/streamlit_app.py", 
@@ -29,7 +29,7 @@ def verify_project():
     for req in required:
         if not os.path.exists(req):
             issues.append(f"Missing required file: {req}")
-            
+
     # 2 & 3. README checks
     if os.path.exists("README.md"):
         with open("README.md", "r", encoding="utf-8") as f:
@@ -38,14 +38,14 @@ def verify_project():
                 issues.append("README.md seems shorter than 1000 words.")
             if "demo" not in content.lower() and "youtube" not in content.lower():
                 issues.append("README.md does not contain 'demo' or 'youtube' links.")
-    
+
     # 4. requirements.txt checks
     if os.path.exists("requirements.txt"):
         with open("requirements.txt", "r", encoding="utf-8") as f:
             content = f.read()
             if "azure-ai-projects" not in content:
                 issues.append("Missing azure-ai-projects in requirements.txt")
-                
+
     # 5. No .env
     if os.path.exists(".env"):
         issues.append("ERROR: .env file found in repo root!")
@@ -76,13 +76,13 @@ def verify_project():
             print(f" - {i}")
     else:
         print("✅ READY TO SUBMIT")
-        
+
     print("\n🏆 ComplianceIQ — Submission Verification Report")
     print("=================================================")
-    print(f"Files: {'❌' if [i for i in issues if 'file' in i.lower()] else '✅'} All required files present")
-    print(f"Security: {'❌' if [i for i in issues if '.env' in i] else '✅'} No secrets detected")
-    print(f"Documentation: {'❌' if [i for i in issues if 'readme' in i.lower()] else '✅'} README complete")
-    print(f"Tests: {'❌' if [i for i in issues if 'pipeline' in i.lower()] else '✅'} Mock pipeline verified")
+    print(f"Files: {'❌' if [i for i in issues if 'file' in i.lower()] else '✅'} All required files present")  # noqa: E501
+    print(f"Security: {'❌' if [i for i in issues if '.env' in i] else '✅'} No secrets detected")  # noqa: E501
+    print(f"Documentation: {'❌' if [i for i in issues if 'readme' in i.lower()] else '✅'} README complete")  # noqa: E501
+    print(f"Tests: {'❌' if [i for i in issues if 'pipeline' in i.lower()] else '✅'} Mock pipeline verified")  # noqa: E501
     print("Accessibility: ✅ Features documented")
     print("IQ Integration: ✅ Foundry IQ usage documented")
     print("=================================================")

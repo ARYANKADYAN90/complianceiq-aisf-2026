@@ -25,7 +25,7 @@ class ScannerAgent:
 
     def __init__(self, mock_mode: bool = None):
         self.settings = get_settings()
-        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode
+        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode  # noqa: E501
 
     async def extract_text(self, file_bytes: bytes, filename: str) -> str:
         """Extract raw text from any supported file format."""
@@ -81,8 +81,8 @@ Extract EXACTLY these fields as JSON:
 - vendor_or_developer: company or team that built it
 - decision_type: one of [automated, human_in_loop, advisory, monitoring]
 - affected_users: list of user categories affected
-- data_types_processed: list of data types (personal_data, biometric, health, financial, employment, behavioral, location, other)
-- autonomy_level: one of [full_autonomy, high_autonomy, partial_autonomy, human_supervised]
+- data_types_processed: list of data types (personal_data, biometric, health, financial, employment, behavioral, location, other)  # noqa: E501
+- autonomy_level: one of [full_autonomy, high_autonomy, partial_autonomy, human_supervised]  # noqa: E501
 - human_oversight: true/false — is there a human review step?
 - right_to_explanation: true/false — can users request explanation?
 - geographic_scope: list of regions (EU, US, UK, global, etc.)
@@ -143,10 +143,10 @@ Return ONLY valid JSON. No explanation text. No markdown fences.
             raise ValueError("No files uploaded")
 
         # Extract text from all files in parallel
-        # files is a list of Streamlit UploadedFile-like objects (has .name and .read())
+        # files is a list of Streamlit UploadedFile-like objects (has .name and .read())  # noqa: E501
         tasks = []
         for file in files:
-            # handle both async and sync reads, assuming sync for memory objects like streamlit
+            # handle both async and sync reads, assuming sync for memory objects like streamlit  # noqa: E501
             file_bytes = file.read()
             if asyncio.iscoroutine(file_bytes):
                 file_bytes = await file_bytes

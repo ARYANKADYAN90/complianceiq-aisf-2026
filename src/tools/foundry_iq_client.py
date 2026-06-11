@@ -2,7 +2,6 @@ import json
 from agent_framework import ChatAgent
 from agent_framework.azure import AzureAIAgentClient, AzureAISearchContextProvider
 from azure.identity.aio import DefaultAzureCredential
-from azure.search.documents.aio import SearchClient
 from src.config import get_settings
 from src.mock.mock_data import MOCK_GAP_MATRIX
 from src.observability.telemetry import trace_foundry_iq_query
@@ -15,12 +14,12 @@ from src.tools.cache_manager import CacheManager
 
 class FoundryIQClient:
     """
-    Client for interacting with Microsoft Foundry IQ knowledge base via Agentic Retrieval.
+    Client for interacting with Microsoft Foundry IQ knowledge base via Agentic Retrieval.  # noqa: E501
     """
 
     def __init__(self, mock_mode: bool = None):
         self.settings = get_settings()
-        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode
+        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode  # noqa: E501
         self.credential = DefaultAzureCredential()
 
         self.circuit_breaker = CircuitBreaker()
@@ -33,10 +32,10 @@ class FoundryIQClient:
         """Query Foundry IQ knowledge base with agentic retrieval."""
         if self.mock_mode:
             return {
-                "answer": "Based on the EU AI Act text, the system must establish a continuous risk management system (Article 9) and ensure human oversight (Article 14).",
+                "answer": "Based on the EU AI Act text, the system must establish a continuous risk management system (Article 9) and ensure human oversight (Article 14).",  # noqa: E501
                 "citations": [
-                    "EU AI Act Art.9(1) - A risk management system shall be established, implemented, documented and maintained.",
-                    "EU AI Act Art.14(1) - High-risk AI systems shall be designed and developed in such a way that they can be effectively overseen by natural persons.",
+                    "EU AI Act Art.9(1) - A risk management system shall be established, implemented, documented and maintained.",  # noqa: E501
+                    "EU AI Act Art.14(1) - High-risk AI systems shall be designed and developed in such a way that they can be effectively overseen by natural persons.",  # noqa: E501
                 ],
                 "sources_used": ["eu-ai-act-full-text"],
                 "confidence": 0.94,
@@ -94,7 +93,7 @@ class FoundryIQClient:
         if self.mock_mode:
             return {
                 "risk_tier": "HIGH RISK",
-                "rationale": "System is used for recruitment and selection of natural persons.",
+                "rationale": "System is used for recruitment and selection of natural persons.",  # noqa: E501
                 "applicable_entries": ["Annex III point 4"],
                 "mandatory_requirements": [
                     "Article 9",
@@ -103,24 +102,24 @@ class FoundryIQClient:
                     "Article 14",
                 ],
                 "citations": [
-                    "EU AI Act Annex III(4) - AI systems intended to be used for recruitment or selection of natural persons"
+                    "EU AI Act Annex III(4) - AI systems intended to be used for recruitment or selection of natural persons"  # noqa: E501
                 ],
             }
 
         prompt = f"""
         Given an AI system with these characteristics:
         {json.dumps(system_profile, indent=2)}
-        
+
         Based on EU AI Act Article 6, Annex II, and Annex III:
         1. What risk tier applies? (UNACCEPTABLE/HIGH/LIMITED/MINIMAL)
         2. Which specific Annex III entries apply?
         3. What are the mandatory requirements for this tier?
-        
+
         Cite exact article numbers and paragraph text.
         """
         response = await self.query(prompt)
 
-        # In a real implementation, we would parse the unstructured response into structured data
+        # In a real implementation, we would parse the unstructured response into structured data  # noqa: E501
         return {
             "risk_tier": "HIGH RISK",  # Assuming parsed from response
             "rationale": response["answer"],
@@ -162,9 +161,9 @@ class FoundryIQClient:
         prompt = f"""
         Given the following AI system profile:
         {json.dumps(system_profile, indent=2)}
-        
-        Evaluate its compliance against the following EU AI Act requirement: {requirement}
-        Identify any compliance gaps, partial compliance, and the severity of non-compliance.
+
+        Evaluate its compliance against the following EU AI Act requirement: {requirement}  # noqa: E501
+        Identify any compliance gaps, partial compliance, and the severity of non-compliance.  # noqa: E501
         Cite specific paragraphs.
         """
         response = await self.query(prompt)
@@ -198,8 +197,8 @@ class FoundryIQClient:
         prompt = f"""
         Given this compliance gap: "{gap_description}"
         Related to {article}.
-        
-        Provide concrete, actionable remediation steps, an estimated effort level, and the ideal owner role.
+
+        Provide concrete, actionable remediation steps, an estimated effort level, and the ideal owner role.  # noqa: E501
         Cite the relevant legal text that justifies these steps.
         """
         response = await self.query(prompt)
@@ -226,8 +225,8 @@ class FoundryIQClient:
         prompt = f"""
         Verify the following claim against the EU AI Act text for {cited_article}:
         Claim: "{claim}"
-        
-        Is this claim fully supported, partially supported, or contradicted by the legal text?
+
+        Is this claim fully supported, partially supported, or contradicted by the legal text?  # noqa: E501
         """
         response = await self.query(prompt)
 

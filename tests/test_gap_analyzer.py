@@ -1,5 +1,4 @@
 import pytest
-import asyncio
 from unittest.mock import AsyncMock
 from src.agents.gap_analyzer_agent import GapAnalyzerAgent, REQUIREMENTS_TO_CHECK
 from src.models.system_profile import SystemProfile
@@ -70,7 +69,7 @@ async def test_parallel_execution(agent, system_profile, mocker):
 @pytest.mark.asyncio
 async def test_failed_check_graceful(agent, system_profile, mocker):
     """Test that one failed Foundry call doesn't crash the entire pipeline."""
-    # Create a side effect that raises an exception on the first call, succeeds on others
+    # Create a side effect that raises an exception on the first call, succeeds on others  # noqa: E501
     call_count = 0
 
     async def side_effect(*args, **kwargs):

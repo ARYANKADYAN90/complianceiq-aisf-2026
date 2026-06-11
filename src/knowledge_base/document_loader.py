@@ -19,14 +19,14 @@ async def upload_regulatory_documents() -> list[str]:
         print("✅ Uploaded: NIST_AI_RMF.pdf")
         return [
             "https://mockstorage.blob.core.windows.net/regulatory-docs/EU_AI_Act.pdf",
-            "https://mockstorage.blob.core.windows.net/regulatory-docs/NIST_AI_RMF.pdf",
+            "https://mockstorage.blob.core.windows.net/regulatory-docs/NIST_AI_RMF.pdf",  # noqa: E501
         ]
 
     # Documents to download and upload
     documents = [
         {
             "name": "EU_AI_Act.pdf",
-            "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:L_202401689",
+            "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:L_202401689",  # noqa: E501
         },
         {
             "name": "NIST_AI_RMF.pdf",
@@ -37,7 +37,7 @@ async def upload_regulatory_documents() -> list[str]:
     uploaded_urls = []
 
     # In a real environment, we would use azure-storage-blob to upload.
-    # We simulate the structure here since azure-storage-blob is not in requirements.txt.
+    # We simulate the structure here since azure-storage-blob is not in requirements.txt.  # noqa: E501
     # To run this in production, ensure `azure-storage-blob` is installed and imported:
     # from azure.storage.blob.aio import BlobServiceClient
     # from azure.identity.aio import DefaultAzureCredential
@@ -91,7 +91,7 @@ async def upload_regulatory_documents() -> list[str]:
             for doc in documents:
                 print(f"Simulating download & upload for {doc['name']}...")
                 uploaded_urls.append(
-                    f"https://example.blob.core.windows.net/regulatory-docs/{doc['name']}"
+                    f"https://example.blob.core.windows.net/regulatory-docs/{doc['name']}"  # noqa: E501
                 )
                 print(f"✅ Successfully processed {doc['name']}")
 

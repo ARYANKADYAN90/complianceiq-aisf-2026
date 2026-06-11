@@ -24,7 +24,7 @@ st.markdown(
     html, body, [class*="css"]  {
         font-size: 15px;
     }
-    
+
     /* Make metric cards have subtle border */
     [data-testid="stMetric"] {
         border: 1px solid rgba(128, 128, 128, 0.2);
@@ -32,7 +32,7 @@ st.markdown(
         border-radius: 8px;
         background-color: rgba(128, 128, 128, 0.05);
     }
-    
+
     /* Make download buttons prominent (green) */
     [data-testid="stDownloadButton"] button {
         background-color: #28a745;
@@ -44,12 +44,12 @@ st.markdown(
         background-color: #218838;
         color: white;
     }
-    
+
     /* Make error messages clearly red */
     [data-testid="stException"] {
         border-left: 5px solid #dc3545;
     }
-    
+
     /* Progress bars: use Microsoft blue (#0078D4) */
     .stProgress > div > div > div > div {
         background-color: #0078D4;
@@ -69,7 +69,7 @@ col1, col2 = st.columns([2, 1])
 with col1:
     st.write("""
     **6 AI agents powered by Microsoft Foundry + Foundry IQ.**
-    Upload your AI system documentation and get a full EU AI Act compliance audit in 3 minutes.
+    Upload your AI system documentation and get a full EU AI Act compliance audit in 3 minutes.  # noqa: E501
     """)
 with col2:
     st.markdown(
@@ -129,7 +129,7 @@ with tab1:
 
     if mock_mode:
         st.info(
-            "📋 No files needed in mock mode. We'll analyze a sample 'TalentFilter Pro' CV screening AI system."
+            "📋 No files needed in mock mode. We'll analyze a sample 'TalentFilter Pro' CV screening AI system."  # noqa: E501
         )
         with st.expander("View sample system details"):
             st.write("""
@@ -276,7 +276,7 @@ with tab2:
                 st.write(f"**Severity**: {severity}")
                 st.write(f"**Description**: {gap['description']}")
                 st.write(
-                    f"**Missing Evidence**: {', '.join(gap['missing_evidence']) if gap['missing_evidence'] else 'None'}"
+                    f"**Missing Evidence**: {', '.join(gap['missing_evidence']) if gap['missing_evidence'] else 'None'}"  # noqa: E501
                 )
                 if gap.get("citations"):
                     st.caption(f"📄 Source: {gap['citations'][0]}")

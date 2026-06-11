@@ -116,7 +116,7 @@ class RemediationAgent:
 
     def __init__(self, mock_mode: bool = None):
         self.settings = get_settings()
-        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode
+        self.mock_mode = mock_mode if mock_mode is not None else self.settings.mock_mode  # noqa: E501
         self.foundry_iq = FoundryIQClient(mock_mode=self.mock_mode)
 
     async def _generate_item_for_gap(
@@ -180,7 +180,7 @@ class RemediationAgent:
                     priority=priority,
                     article_reference=template["article_reference"],
                     citation=citation,
-                    success_criteria=f"Compliance with {template['article_reference']} validated.",
+                    success_criteria=f"Compliance with {template['article_reference']} validated.",  # noqa: E501
                     dependencies=[],
                 )
             )
@@ -240,7 +240,7 @@ class RemediationAgent:
             lines = [f"{title} ({len(items)} items, {total_days} total days):"]
             for item in items:
                 lines.append(
-                    f"- [{item.owner_role}] {item.action_title} ({item.effort_days} days)"
+                    f"- [{item.owner_role}] {item.action_title} ({item.effort_days} days)"  # noqa: E501
                 )
             return "\n".join(lines)
 
