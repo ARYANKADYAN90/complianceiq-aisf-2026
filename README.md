@@ -18,8 +18,6 @@ ComplianceIQ democratizes regulatory adherence by performing a comprehensive EU 
 The system operates via 6 specialized AI agents, each strictly scoped to a single compliance function. This pipeline is exclusively powered by **Foundry IQ**, our multi-source regulatory knowledge base built on Azure AI Search and Azure AI Foundry. Because every finding, gap analysis, and remediation step is grounded in exact article citations retrieved dynamically from **Foundry IQ**, ComplianceIQ eliminates AI hallucination and produces mathematically grounded, legally verifiable compliance reports ready for boardroom review.
 
 ## 🏗️ Architecture
-![Architecture](docs/architecture_diagram.png)
-
 ```mermaid
 graph TD
     User([User]) --> |Uploads Docs| UI[Streamlit UI]
