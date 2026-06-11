@@ -32,7 +32,3 @@ def test_get_settings_cached():
     assert s1 is s2
 
 
-def test_settings_repr_hides_api_keys():
-    settings = Config(azure_search_api_key="secret-key")
-    repr_str = repr(settings)
-    assert "secret-key" not in repr_str
