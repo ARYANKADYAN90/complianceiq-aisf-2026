@@ -1,0 +1,12 @@
+name: complianceiq
+services:
+  complianceiq-app:
+    project: .
+    language: python
+    host: containerapp
+hooks:
+  postProvision:
+    shell: sh
+    run: |
+      echo "Setting up Foundry IQ knowledge base..."
+      python -m src.knowledge_base.setup_kb

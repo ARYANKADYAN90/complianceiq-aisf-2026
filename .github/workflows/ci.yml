@@ -1,0 +1,34 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install black flake8 mypy
+      - run: black --check src/ tests/ app/
+      - run: flake8 src/ tests/ app/ --max-line-length=88 --extend-ignore=E203
+  
+  test:
+    runs-on: ubuntu-latest
+    env:
+      MOCK_MODE: "true"
+      AZURE_FOUNDRY_PROJECT_ENDPOINT: "https://mock.api.azureml.ms"
+      AZURE_SEARCH_ENDPOINT: "https://mock.search.windows.net"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install -r requirements.txt
+      - run: pytest tests/ -v --tb=short --asyncio-mode=auto
+      - run: pytest tests/test_full_pipeline.py::test_mock_pipeline_under_2_seconds -v
+  
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install bandit safety
+      - run: bandit -r src/ -ll
+      - run: safety check -r requirements.txt

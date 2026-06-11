@@ -1,0 +1,20 @@
+# Technical Specification Document
+System Name: TalentFilter Pro
+Version: 2.3
+Vendor: GlobalHR Solutions Inc.
+Deployment Environment: Production (Cloud)
+
+## 1. System Purpose
+TalentFilter Pro is an automated CV screening and candidate ranking system designed to accelerate the recruitment pipeline. It ingests thousands of resumes and cover letters submitted through our corporate job portal and automatically evaluates candidates against predefined job descriptions. The primary purpose is to dramatically reduce the time HR recruiters spend manually reading resumes.
+
+## 2. Decision Making Process
+The system utilizes natural language processing (NLP) to extract relevant keywords, educational background, and professional history. Candidates are then scored from 1 to 100 based on their semantic similarity to the ideal candidate profile. If a candidate scores below 40, they are automatically rejected and sent a generic templated email declining their application. No human recruiter reviews applications that score below this threshold, ensuring maximum efficiency.
+
+## 3. Data Processing
+TalentFilter Pro processes a wide array of personal data, including names, contact information, educational histories, employment histories, and inferred demographic data extracted implicitly from resume text. The system operates globally and currently processes data for job applicants located throughout the United States, European Union, and Asia-Pacific regions.
+
+## 4. System Autonomy and Oversight
+The system operates with full autonomy in the initial screening phase. Recruiters only interact with the top 10% of candidates who pass the algorithmic filter. Because the proprietary scoring algorithm relies on a complex deep neural network, there is currently no capability to provide a detailed explanation or rationale to rejected candidates regarding exactly why their specific resume scored poorly.
+
+## 5. Security and Logging
+Data is encrypted at rest using AES-256 and in transit via TLS 1.3. Currently, the system logs when an application is received and when a rejection email is sent. However, due to storage constraints, detailed algorithmic audit logs showing the specific weights assigned to individual resume traits are not retained after the decision is made.
