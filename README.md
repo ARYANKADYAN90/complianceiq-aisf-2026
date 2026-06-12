@@ -74,8 +74,8 @@ az search document upload --service-name $SEARCH_SERVICE --index-name compliance
 ## 🚀 Quick Start (3 commands)
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/complianceiq
-cd complianceiq
+git clone https://github.com/ARYANKADYAN90/complianceiq-aisf-2026.git
+cd complianceiq-aisf-2026
 pip install -r requirements.txt
 streamlit run app/streamlit_app.py  # Mock mode ON by default
 ```
